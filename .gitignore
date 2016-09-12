@@ -6,3 +6,12 @@
 
 # ignore .pdf files
 *.pdf
+
+# ignore .brf files
+*.brf
+
+*.fdb_latexmk
+
+*.fls
+
+*.out

@@ -78,11 +78,15 @@
     $\|f_{k_n}\|_{L^2} \to 0$, which contradicts $\|f_k\|_{L^2} = 1$ for all $k$. Therefore, there must be a point $x_1 \in [0,1]$ such that
     $f_{k_n}(x_1) \to y$ for some subsequence $\{ f_{k_n} \}$ and some $y \neq 0$.
 
-    Then for $x \in [x_1 - \frac{y}{2C}, x_1 + \frac{y}{2C}]$, $|f(x)| \geq \frac{y}{2}.$ Then
+    Let $\varepsilon>0$ with $\varepsilon < \frac{y}{2}$. Then for $n$ sufficiently large and $x \in [x_1 - \frac{y}{2C}, x_1 + \frac{y}{2C}]$ where $C$ is the uniform bound on the
+    dervatives, $|f_{k_n}(x)| \geq \frac{y}{2} - \varepsilon.$ Then
     \begin{align*}
-      \langle f, \chi_{[x_1 - \frac{y}{2C}, x_1 + \frac{y}{2C}]} \rangle_{L^2} &= \int_{x_1 - \frac{y}{2C}}^{x_1 + \frac{y}{2C}} |f(x)|^2 dx \\
-      &\geq
-    \end{align*}<++>
+      \langle f_{k_n}, \chi_{[x_1 - \frac{y}{2C}, x_1 + \frac{y}{2C}]} \rangle_{L^2} &= \int_{x_1 - \frac{y}{2C}}^{x_1 + \frac{y}{2C}} |f_{k_n}(x)|^2 dx \\
+      &\geq \frac{y}{C} \left( \frac{y}{2} - \varepsilon \right) > 0
+    \end{align*}
+
+    But an orthonormal system in a Hilbert space must converge weakly to 0, so we have reached a contradiction. Therefore, $\{ f'_k \}$ cannot be
+    uniformly bounded.
 
   \end{proof}
 
@@ -172,7 +176,34 @@ i.e. property $(iii)$ in the definition of approximate identities fails.
       \end{align*}
 
     \item
-  \end{enumerate}<++>
+      First, we see
+      \begin{align*}
+        \int_{0}^{1} D_N(x) dx &= \int_{0}^{1} \sum_{n=-N}^N e^{2 \pi i n x} dx \\
+        &= 1
+      \end{align*}
+
+      Therefore,
+      \begin{align*}
+        \int_{0}^{1} F_N(x) dx &= \int_{0}^{1} \frac{1}{N+1} \sum_{n=0}^N D_n(x) dx \\
+        &= \frac{1}{N+1} \sum_{n=0}^N \int_{0}^{1} dx \\
+        &= 1
+      \end{align*}
+
+      Because $F_N(x) \geq 0$ for all $x$, we immediately have $\|F_N\|_{L^1} = 1$.
+      Thus the first two properties are satisfied.
+
+      Take $\delta > 0$. On $\mathbb{T}$, for $x \in [B_\delta(0)]^C$, $\sin(\pi x)$ is bounded away from zero. So we can find an $M>0$ such that
+      $|\sin(\pi x)| > M$ for all $x \in [B_\delta(0)]^C$.
+      Therefore,
+      \begin{align*}
+        \int_{[B_\delta(0)]^C}^{} | F_N(x) | dx &= \int_{[B_\delta(0)]^C}^{} \frac{1}{N+1} \left( \frac{\sin \left( (N+1) \pi x \right)}{\sin(\pi x)}
+        \right)^2 dx \\
+        &\leq \int_{[B_\delta(0)]^C}^{} \frac{1}{(N+1)M^2} dx \\
+        &\leq \frac{1}{(N+1)M^2} \to 0 \text{ as } N \to \infty
+      \end{align*}
+
+      Therefore, $\{F_N\}$ is an approximate identity.
+  \end{enumerate}
 
 \end{proof}
 
