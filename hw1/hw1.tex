@@ -54,7 +54,7 @@
     $| f_{k_n}(x_0) | > n$. Let $\delta > 0$. By the Mean Value Theorem and our uniform bound on $f'_{k_n}$, we have $f_{k_n}(x) \geq n - C \delta$
     for all $x \in [x - \delta, x + \delta]$ (in the case that $x=0$ or $x=1$, use an appropriate interval with 0 or 1 as an endpoint and the same
     argument holds). Therefore,
-    \[ \int_{x-\delta}^{x+\delta} | f(x) |^2 dx \geq (n - C \delta)^2 * 2\delta \to \infty \text{ as } n \to \infty .\]
+    \[ \int_{x-\delta}^{x+\delta} | f(x) |^2 dx \geq 2 \delta (n - C \delta)^2 \to \infty \text{ as } n \to \infty .\]
     This contradicts $\|f_k\| = 1$ for all $k$, therefore, $\{ f_k \}$ is uniformly bounded.
 
     Next, we will show the existence of a subsequence $\{ f_{k_n} \}$ and an $x \in [0,1]$ such that $f_{k_n}(x) \to y$ as $n \to \infty$ with $y \neq
