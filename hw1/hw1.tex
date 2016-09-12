@@ -28,6 +28,7 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
 \newcommand{\supp}[1]{\mathop{\mathrm{supp}}\left(#1\right)}
 \newcommand{\lip}[1]{\mathop{\mathrm{Lip}}\left(#1\right)}
 \newcommand{\curl}{\mathrm{curl}}
@@ -43,6 +44,47 @@
 \begin{enumerate}
 
 \item Let $\{ f_k \}_{k\in \mathbb N}$ be an orthonormal system in $L^2 [0,1]$. Assume that for each $k\in \mathbb N$, the functions $f_k$ are continuously differentiable on $[0,1]$. Show that the family $\{ f'_k \}$ cannot be uniformly bounded.
+
+  \begin{proof}
+
+    We will prove the statement by contradiction. Assume $\{ f_k' \}$ is uniformly bounded. That is, assume there is some $C \geq 0$ such that
+    $|f'_k(x)| \leq C$ for all $k \in \N$ and all $x \in [0,1]$.
+
+    First, we will show the $\{ f_k \}$ are uniformly bounded. If not, for some $x_0 \in [0,1]$, we could find a subsequence $\{ f_{k_n} \}$ such that
+    $| f_{k_n}(x_0) | > n$. Let $\delta > 0$. By the Mean Value Theorem and our uniform bound on $f'_{k_n}$, we have $f_{k_n}(x) \geq n - C \delta$
+    for all $x \in [x - \delta, x + \delta]$ (in the case that $x=0$ or $x=1$, use an appropriate interval with 0 or 1 as an endpoint and the same
+    argument holds). Therefore,
+    \[ \int_{x-\delta}^{x+\delta} | f(x) |^2 dx \geq (n - C \delta)^2 * 2\delta \to \infty \text{ as } n \to \infty .\]
+    This contradicts $\|f_k\| = 1$ for all $k$, therefore, $\{ f_k \}$ is uniformly bounded.
+
+    Next, we will show the existence of a subsequence $\{ f_{k_n} \}$ and an $x \in [0,1]$ such that $f_{k_n}(x) \to y$ as $n \to \infty$ with $y \neq
+    0$.
+
+    Assume no such sequence exists. Take $x = 0$. $\{ f_k(0) \}$ is bounded by the uniform bound we already found, so $\{ f_{k_n}(0) \}$ has a
+    convergent subsequence, $\{ f_{k_n} (0) \}$. By our assumption, we must have $f_{k_n}(0) \to 0$ as $n \to \infty$ (otherwise we have the sequence
+    we assumed didn't exist).
+
+    By repeating this argument countably many times, we can get a subsequence $\{ f_{k_n} \}$ such that $f_{k_n}(q) \to 0$ as $n \to \infty$ for all
+    $q \in \Q$.
+
+    Let $\varepsilon >0$. For any $x,y \in [0,1]$ with $|x-y| < \frac{\varepsilon}{C}$ where $C$ is the uniform bound on our derivatives, we have
+    \[ | f_{k_n}(x) - f_{k_n}(y) | \leq \varepsilon .\]
+
+    Thus, $\{f_{k_n}\}$ is a uniformly bounded and equicontinuous sequence of functions. Therefore, by Arzela-Ascoli, there is a further subsequence
+    (which we will continue denoting by $\{ f_{k_n} \}$ that converges uniformly.
+
+    Because $\{ f_{k_n} \}$ is a uniformly convergent sequence of continuous functions, it converges to a continuous function $f(x)$. As already
+    stated $f(q) = 0$ for all $q \in \Q$, therefore $\|f\|_{L^2} = 0$. $f_{k_n} \to f$ uniformly implies $f_{k_n} \to f$ in $L^2$. Therefore,
+    $\|f_{k_n}\|_{L^2} \to 0$, which contradicts $\|f_k\|_{L^2} = 1$ for all $k$. Therefore, there must be a point $x_1 \in [0,1]$ such that
+    $f_{k_n}(x_1) \to y$ for some subsequence $\{ f_{k_n} \}$ and some $y \neq 0$.
+
+    Then for $x \in [x_1 - \frac{y}{2C}, x_1 + \frac{y}{2C}]$, $|f(x)| \geq \frac{y}{2}.$ Then
+    \begin{align*}
+      \langle f, \chi_{[x_1 - \frac{y}{2C}, x_1 + \frac{y}{2C}]} \rangle_{L^2} &= \int_{x_1 - \frac{y}{2C}}^{x_1 + \frac{y}{2C}} |f(x)|^2 dx \\
+      &\geq
+    \end{align*}<++>
+
+  \end{proof}
 
 \item Let $D_N (x)$ be the Dirichlet kernel, i.e. $$ D_N (x) = \sum_{n=-N}^N e^{2\pi i nx}. $$
 
