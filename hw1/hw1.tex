@@ -213,6 +213,23 @@ i.e. property $(iii)$ in the definition of approximate identities fails.
 \item Show that the family $\{ V_N \}$ is an {\it{approximate identity}} as $N\rightarrow \infty$.
 \item Find and plot the Fourier coefficients of $V_N$.
 \end{enumerate}
+
+  \begin{proof}
+
+    We already showed $\{F_N\}$ is an approximate identity. So
+    \begin{align*}
+      \int_{0}^{1} V_N(x) dx &= 2 \int_{0}^{1} F_{2N+1}(x) dx - \int_{0}^{1} F_N(x)dx \\
+      &= 1
+    \end{align*}
+
+    We can write the de la Val\'{e}e Poussin kernel as
+    \begin{align*}
+      V_N(x) &= \frac{2 \sin^2(2(N+1) \pi x)}{2(N+1) \sin^2 (\pi x)} - \frac{\sin^2\left( (N+1) \pi x \right)}{(N+1) \sin^2 ( \pi x)} \\
+      &= \frac{4 \sin^2 \left(  (N+1) \pi x \right) \cos^2 \left( (N+1) \pi x \right)}{(N+1) \sin^2 \pi x}<++>
+    \end{align*}<++>
+
+  \end{proof}
+
 \item  (Grafakos \#3.1.11; Theorem of Fej\'er and F.\~Riesz)  Let $\displaystyle{ P(x) = \sum_{k=-N}^N a_k e^{2\pi i k x} }$ be a trigonometric polynomial such that $ P(x) > 0$ for all $x\in \mathbb T$. Prove that there exists a polynomial  $Q(x)$ of the form  $\displaystyle{ Q(x) = \sum_{k=0}^N b_k e^{2\pi i k x} }$ such that $$P (x) = | Q(x) |^2 . $$
 
 {\it{Hint:}}  Note that $N$ zeros of the complex polynomial   $\displaystyle{ R(z) = \sum_{k=-N}^N a_k z^{k+N} }$ lie inside the unit circle, while the other $N$ lie outside.
