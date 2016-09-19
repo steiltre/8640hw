@@ -78,8 +78,8 @@
     $\|f_{k_n}\|_{L^2} \to 0$, which contradicts $\|f_k\|_{L^2} = 1$ for all $k$. Therefore, there must be a point $x_1 \in [0,1]$ such that
     $f_{k_n}(x_1) \to y$ for some subsequence $\{ f_{k_n} \}$ and some $y \neq 0$.
 
-    Let $\varepsilon>0$ with $\varepsilon < \frac{y}{2}$. Then for $n$ sufficiently large and $x \in [x_1 - \frac{y}{2C}, x_1 + \frac{y}{2C}]$ where $C$ is the uniform bound on the
-    dervatives, $|f_{k_n}(x)| \geq \frac{y}{2} - \varepsilon.$ Then
+    Let $\varepsilon>0$ with $\varepsilon < \frac{y}{2}$. Then for $n$ sufficiently large and $x \in { [x_1 - \frac{y}{2C}, x_1 + \frac{y}{2C}] }$ where $C$ is the uniform bound on the
+    derivatives, $|f_{k_n}(x)| \geq \frac{y}{2} - \varepsilon.$ Then
     \begin{align*}
       \langle f_{k_n}, \chi_{[x_1 - \frac{y}{2C}, x_1 + \frac{y}{2C}]} \rangle_{L^2} &= \int_{x_1 - \frac{y}{2C}}^{x_1 + \frac{y}{2C}} |f_{k_n}(x)|^2 dx \\
       &\geq \frac{y}{C} \left( \frac{y}{2} - \varepsilon \right) > 0
@@ -195,9 +195,9 @@ i.e. property $(iii)$ in the definition of approximate identities fails.
       First, we compute
       \begin{align}
         \sum_{n=0}^N \sin \left( (2n+1) \pi x \right) \sin ( \pi x ) &= \sum_{n=0}^N \frac{1}{2} \big[ - \cos \left( 2 (n+1) \pi x \right) + \cos
-        \left( 2 n \pi x \right) \big] &\text{by a product identity} \nonumber \\
-        &= \frac{1}{2} \big[ - \cos \left( 2(N+1) \pi x \right) + 1 \big] &\text{because our sum telescopes} \nonumber \\
-        &= \frac{1}{2} \big[ - 1 + 2 \sin^2 \left( (N+1) \pi x \right) + 1 \big] &\text{by the double-angle formula} \nonumber \\
+        \left( 2 n \pi x \right) \big] \nonumber \\ % &\text{by a product identity} \nonumber \\
+        &= \frac{1}{2} \big[ - \cos \left( 2(N+1) \pi x \right) + 1 \big] \nonumber \\ % &\text{because our sum telescopes} \nonumber \\
+        &= \frac{1}{2} \big[ - 1 + 2 \sin^2 \left( (N+1) \pi x \right) + 1 \big] \nonumber \\ % &\text{by the double-angle formula} \nonumber \\
         &= \sin^2 \left( (N+1) \pi x \right)
         \label{eqn:trig_prod}
       \end{align}
@@ -320,7 +320,7 @@ i.e. property $(iii)$ in the definition of approximate identities fails.
     \[
       \hat{D}_N (k) =
       \begin{cases}
-        1 &\text{if } k \leq N \\
+        1 &\text{if } |k| \leq N \\
         0 &\text{else}
       \end{cases}
     \]
@@ -329,7 +329,7 @@ i.e. property $(iii)$ in the definition of approximate identities fails.
     \begin{align*}
       \hat{F}_N (k) &= \frac{1}{N+1} \sum_{n=0}^N \hat{D}_n (k) \\
       &= \begin{cases}
-        1 - \frac{k+1}{N+1} &\text{if } k \leq N \\
+        1 - \frac{k+1}{N+1} &\text{if } |k| \leq N \\
         0 &\text{else}
         \end{cases}
     \end{align*}
@@ -338,13 +338,13 @@ i.e. property $(iii)$ in the definition of approximate identities fails.
     \begin{align*}
       \hat{V}_N(k) &= 2 \hat{F}_{2N+1}(k) - \hat{F}_N (k) \\
       &= \begin{cases}
-        \left( 2 - \frac{2(k+1)}{2(N+1)} \right) - \left( 1 - \frac{k+1}{N+1} \right) &\text{if } k \leq N \\
-        2 - \frac{2(k+1)}{2(N+1)} &\text{if } N < k \leq < 2N+1 \\
+        \left( 2 - \frac{2(k+1)}{2(N+1)} \right) - \left( 1 - \frac{k+1}{N+1} \right) &\text{if } |k| \leq N \\
+        2 - \frac{2(k+1)}{2(N+1)} &\text{if } N < |k| \leq 2N+1 \\
         0 &\text{else}
       \end{cases} \\
       &= \begin{cases}
-        1 &\text{if } k \leq N \\
-        2 - \frac{k+1}{N+1} &\text{if } N < k \leq 2N+1 \\
+        1 &\text{if } |k| \leq N \\
+        2 - \frac{k+1}{N+1} &\text{if } N < |k| \leq 2N+1 \\
         0 &\text{else}
       \end{cases}
     \end{align*}
@@ -352,6 +352,8 @@ i.e. property $(iii)$ in the definition of approximate identities fails.
   \end{enumerate}
 
   \end{proof}
+
+  \vspace{6cm}
 
 \item  (Grafakos \#3.1.11; Theorem of Fej\'er and F.\~Riesz)  Let $\displaystyle{ P(x) = \sum_{k=-N}^N a_k e^{2\pi i k x} }$ be a trigonometric polynomial such that $ P(x) > 0$ for all $x\in \mathbb T$. Prove that there exists a polynomial  $Q(x)$ of the form  $\displaystyle{ Q(x) = \sum_{k=0}^N b_k e^{2\pi i k x} }$ such that $$P (x) = | Q(x) |^2 . $$
 
@@ -361,7 +363,8 @@ i.e. property $(iii)$ in the definition of approximate identities fails.
 
   Define the polynomial
   \[ f(z) = \sum_{k=-N}^N a_k z^k .\]
-  Because $P(\xi) > 0$ for all $\xi$, all $f(z) \neq 0$ for all $|z|=1$. We see that $f(z) = \overline{f(1/ \overline{z}})$, so the zeros of $z^N f$ come
+  Because $P(\xi) > 0$ for all $\xi$, all $f(z) \neq 0$ for all $|z|=1$. $P(\overline{x}) = P(x)$ for real $x$, so $\overline{a_k} = a_{-k}$.
+  Therefore, we see that $f(z) = \overline{f(1/ \overline{z}})$, so the zeros of $z^N f$ come
   in pairs, $z_j$ and $\frac{1}{\overline{z}_j}$ with $|z_j| \neq 1$. Thus we can write
   \[ z^N f(z) = a_N \prod_{k=0}^N (z-z_k) \left( z - \frac{1}{\overline{z}_k} \right) .\]
   Then $f(z) = a_N \prod_{k=0}^N (z-z_k) \left( \frac{1}{z} - \overline{z}_k \right)$. Define
