@@ -114,16 +114,27 @@ i.e. property $(iii)$ in the definition of approximate identities fails.
       \end{align*}
 
     \item
+      Take $\delta > 0$. $|D_N(x)| \geq | \sin\left( (2N+1) \pi x \right) |$. On a single peak around $\frac{1}{2}$, we have
+      \begin{align*}
+        \int_{\frac{N}{2N+1}}^{\frac{N+1}{2N+1}} |\sin \left( (2N+1) \pi x \right) | dx &= \frac{2}{(2N+1)\pi}
+      \end{align*}
+
+      Within the interval $\left[ \frac{1}{2} - \delta, \frac{1}{2} + \delta \right]$, $|\sin\left( (2N+1) \pi x \right)|$ has approximately $\left
+      \lfloor{\delta (2N+1)} \right \rfloor$ oscillations.
+
+      So for any $N$,
+      \begin{align*}
+        \int_{\frac{1}{2}-\delta}^{\frac{1}{2} + \delta} | D_N(x) | dx &\leq \int_{\frac{1}{2} - \delta}^{\frac{1}{2} + \delta} | \sin\left( (2N+1)
+        \pi x \right) | dx \\
+        &\geq \frac{2}{(2N+1) \pi} (\delta (2N+1) - 1) \\
+        &= \frac{2 \delta}{\pi} - \frac{2}{(2N+1)\pi} \to \frac{2 \delta}{\pi} > 0 \text{ as } N \to \infty
+      \end{align*}
+
+      Taking $N$ large enough, we can guarantee $\frac{2\delta}{\pi} - \frac{2}{(2N+1) \pi} > 0$. Combining this with the fact that
+      $\int_{\frac{1}{2} - \delta}^{\frac{1}{2} + \delta} |D_N(x)| dx > 0$ for any finite $N$, we are able to find a constant $c_\delta$ such that
+      $\int_{\frac{1}{2} - \delta}^{\frac{1}{2} + \delta} |D_N(x)|dx \geq c_\delta$ for all $N$.
 
     \item
-      \begin{align*}
-        \| D_N \|_1 &= \left\| \sum_{n = -N}^N e^{2 \pi i n x} \right\|_1 \\
-        &= \int_{0}^{1} \left| \sum_{n=-N}^N e^{2 \pi i n x} \right| dx \\
-        &= \int_{0}^{1} \left| 1 + 2 \sum_{n = 0}^N \cos( 2 \pi n x) \right| dx \\
-        &\leq 1 + 2 \sum_{n = 0}^N \int_{0}^{1} \left| \cos(2 \pi n x) \right| dx \\
-        &= 1 + \sum_{n=0}^N \frac{1}{\pi n} \int_{0}^{2 \pi n x} | \cos y | dy \\
-      \end{align*}<++>
-
       \begin{align*}
         \| D_N \|_1 &= \int_{0}^{1} \left| \frac{\sin \left( (2N+1) \pi x \right)}{\sin (\pi x)} \right| dx \\
         &= \int_{0}^{1} \frac{ | \sin \left( ( 2N+1 ) \pi x \right) |}{ \pi x - \frac{(\pi x)^3}{3!} + \dots} dx \\
@@ -140,7 +151,31 @@ i.e. property $(iii)$ in the definition of approximate identities fails.
       \end{align*}
 
       Therefore,
-      \[ \| D_N \|_1 \geq \frac{2}{\pi^2} \sum_{k=0}^{2N} \frac{1}{k+1} \geq \frac{2}{\pi^2} \log (2N) .\]
+      \[ \| D_N \|_1 \geq 2 \frac{2}{\pi^2} \sum_{k=0}^{N} \frac{1}{k+1} \geq \frac{4}{\pi^2} \log N .\]
+
+      For the other direction, we first look on the intervals around $x = 0$. Here we have,
+      \begin{align*}
+        \int_{0}^{\frac{1}{2N+1}} \frac{\sin\left( (2N+1)\pi x \right)}{\sin ( \pi x)} dx &\leq \int_{0}^{\frac{1}{2N+1}} (2N+1) dx \\
+        &= 1
+      \end{align*}
+
+      For $0<k\leq N$, we also have
+      \begin{align*}
+        \int_{\frac{k}{2N+1}}^{\frac{k+1}{2N+1}} \left| \frac{\sin\left( (2N+1) \pi x \right)}{\sin ( \pi x )} \right| dx
+        &\leq \int_{\frac{k}{2N+1}}^{\frac{k+1}{2N+1}} \left| \frac{\sin\left( (2N+1) \pi x \right)}{\frac{k}{2N+1}} \right| dx \\
+        &= \frac{2}{\pi k}
+      \end{align*}
+
+      Combining these two, we have
+      \begin{align*}
+        \| D_N \|_{L^1} &= 2 \int_{0}^{\frac{1}{2N+1}} \left| \frac{\sin\left( (2N+1) \pi x \right)}{\sin( \pi x )} \right| dx + 2 \sum_{k=1}^{N}
+        \int_{\frac{k}{2N+1}}^{\frac{k+1}{2N+1}} \left| \frac{\sin\left( (2N+1)\pi x \right)}{\sin(\pi x)} \right| dx \\
+        &\leq 2 + \sum_{k=1}^N \frac{2}{\pi k} \\
+        &\leq 2 + \frac{2}{\pi} \log N
+      \end{align*}
+
+      Thus there exist constants $c,C$ such that
+      \[ c \log N \leq \|D_N\|_{L^1} \leq C \log N .\]
 
   \end{enumerate}
 
@@ -216,6 +251,10 @@ i.e. property $(iii)$ in the definition of approximate identities fails.
 
   \begin{proof}
 
+    \begin{enumerate}
+
+    \item
+
     We already showed $\{F_N\}$ is an approximate identity. So
     \begin{align*}
       \int_{0}^{1} V_N(x) dx &= 2 \int_{0}^{1} F_{2N+1}(x) dx - \int_{0}^{1} F_N(x)dx \\
@@ -225,14 +264,112 @@ i.e. property $(iii)$ in the definition of approximate identities fails.
     We can write the de la Val\'{e}e Poussin kernel as
     \begin{align*}
       V_N(x) &= \frac{2 \sin^2(2(N+1) \pi x)}{2(N+1) \sin^2 (\pi x)} - \frac{\sin^2\left( (N+1) \pi x \right)}{(N+1) \sin^2 ( \pi x)} \\
-      &= \frac{4 \sin^2 \left(  (N+1) \pi x \right) \cos^2 \left( (N+1) \pi x \right)}{(N+1) \sin^2 \pi x}<++>
-    \end{align*}<++>
+      &= \frac{4 \sin^2 \left(  (N+1) \pi x \right) \cos^2 \left( (N+1) \pi x \right) - \sin^2 \left( (N+1) \pi x \right)}{(N+1) \sin^2 \pi x} \\
+      &= \frac{ \sin^2 \left( (N+1) \pi x \right) \left( 4 \cos^2 \left( (N+1) \pi x \right) - 1\right)}{(N+1) \sin^2 (\pi x)} \\
+    \end{align*}
+
+    We can see the zeros of the numerator are of the form $x = \frac{k}{N+1}, {k = 0, \dots, N+1}$ from the $\sin^2 \left( (N+1) \pi x \right)$ piece
+    and $x = \frac{1}{3(N+1)} + \frac{k}{N+1}, {k = 0, \dots, N}$ or $x = - \frac{1}{3(N+1)} + \frac{k}{N+1}, {k = 1,\dots, N+1}$ from the $4 \cos^2
+    \left( (N+1) \pi x \right) - 1$ piece.
+
+    We must take the absolute value of this and integrate from 0 to 1. We can split $[0,1]$ based on the zeros listed above. For the intervals around
+    $x = 0$ and $x = 1$, our integrand is blowing up, but we will see this contribution to the integral remains bounded because it is occurring over
+    smaller intervals. The contribution from the rest of the intervals will all be easily bounded.
+
+    \begin{align*}
+      \| V_N \|_{L^1} &= \int_{0}^{1} \left| \frac{\sin^2 \left( (N+1) \pi x \right) \left( 4 \cos^2 \left( (N+1) \pi x \right) - 1 \right)}{(N+1)
+      \sin^2 (\pi x)} \right| dx \\
+      &= 2 \int_{0}^{\frac{1}{3(N+1)}} \left| \frac{\sin^2 \left( (N+1) \pi x \right) \left( 4 \cos^2 \left( (N+1) \pi x \right) - 1 \right)}{(N+1)
+      \sin^2 (\pi x)} \right| dx \\
+      &\quad + 2 \int_{\frac{1}{3(N+1)}}^{\frac{1}{2}} \left| \frac{\sin^2 \left( (N+1) \pi x \right) \left( 4 \cos^2 \left( (N+1) \pi x \right) - 1 \right)}{(N+1)
+      \sin^2 (\pi x)} \right| dx
+    \end{align*}
+
+    On the first interval, by expanding in power series, we see
+    \[ \frac{\sin^2 \left( (N+1) \pi x \right) \left( 4 \cos^2 \left( (N+1) \pi x \right) - 1 \right)}{(N+1)
+    \sin^2 (\pi x)} \leq \frac{3(N+1)^2 \pi^2}{(N+1) \pi^2} = 3(N+1) \]
+
+    Therefore,
+    \begin{align*}
+      2 \int_{0}^{\frac{1}{3(N+1)}} \left| \frac{\sin^2 \left( (N+1) \pi x \right) \left( 4 \cos^2 \left( (N+1) \pi x \right) - 1 \right)}{(N+1)
+      \sin^2 (\pi x)} \right| dx &\leq 2 \int_{0}^{\frac{1}{3(N+1)}} 3(N+1) dx \\
+      & \leq 2
+    \end{align*}
+
+    On the remaining integral, we use the fact that $\sin( \pi x ) \geq \frac{1}{3(N+1)}$ on the interval $[\frac{1}{3(N+1)}, \frac{1}{2} ]$ to
+    conclude
+    \begin{align*}
+      2 \int_{\frac{1}{3(N+1)}}^{\frac{1}{2}} \left| \frac{\sin^2 \left( (N+1) \pi x \right) \left( 4 \cos^2 \left( (N+1) \pi x \right) - 1 \right)}{(N+1)
+      \sin^2 (\pi x)} \right| dx &\leq 2 \int_{\frac{1}{3(N+1)}}^{\frac{1}{2}} dx \\
+      &\leq 1
+    \end{align*}
+
+    Therefore, we know $\| V_N \|_{L^1} \leq 3$.
+
+    Now we must show the final property of approximate identities. Let $\delta > 0$. Then
+    \begin{align*}
+      \int_{\delta}^{\frac{1}{2}} \left| V_N(x) \right| dx &\leq \int_{\delta}^{\frac{1}{2}} \left| F_{2N+1}(x) \right| dx +
+      \int_{\delta}^{\frac{1}{2}} \left| F_N(x) \right| dx \\
+      &\to 0 \text{ as } N \to \infty
+    \end{align*}
+    because $\{F_N\}$ is an approximate identity.
+    Therefore, $\{V_N\}$ is an approximate identity.
+
+    \item
+    We start with the Dirichlet kernel. For $D_N(x)$, we easily see that
+    \[
+      \hat{D}_N (k) =
+      \begin{cases}
+        1 &\text{if } k \leq N \\
+        0 &\text{else}
+      \end{cases}
+    \]
+
+    By linearity, we find the Fourier coefficients of $F_N$ are given by
+    \begin{align*}
+      \hat{F}_N (k) &= \frac{1}{N+1} \sum_{n=0}^N \hat{D}_n (k) \\
+      &= \begin{cases}
+        1 - \frac{k+1}{N+1} &\text{if } k \leq N \\
+        0 &\text{else}
+        \end{cases}
+    \end{align*}
+
+    Then
+    \begin{align*}
+      \hat{V}_N(k) &= 2 \hat{F}_{2N+1}(k) - \hat{F}_N (k) \\
+      &= \begin{cases}
+        \left( 2 - \frac{2(k+1)}{2(N+1)} \right) - \left( 1 - \frac{k+1}{N+1} \right) &\text{if } k \leq N \\
+        2 - \frac{2(k+1)}{2(N+1)} &\text{if } N < k \leq < 2N+1 \\
+        0 &\text{else}
+      \end{cases} \\
+      &= \begin{cases}
+        1 &\text{if } k \leq N \\
+        2 - \frac{k+1}{N+1} &\text{if } N < k \leq 2N+1 \\
+        0 &\text{else}
+      \end{cases}
+    \end{align*}
+
+  \end{enumerate}
 
   \end{proof}
 
 \item  (Grafakos \#3.1.11; Theorem of Fej\'er and F.\~Riesz)  Let $\displaystyle{ P(x) = \sum_{k=-N}^N a_k e^{2\pi i k x} }$ be a trigonometric polynomial such that $ P(x) > 0$ for all $x\in \mathbb T$. Prove that there exists a polynomial  $Q(x)$ of the form  $\displaystyle{ Q(x) = \sum_{k=0}^N b_k e^{2\pi i k x} }$ such that $$P (x) = | Q(x) |^2 . $$
 
 {\it{Hint:}}  Note that $N$ zeros of the complex polynomial   $\displaystyle{ R(z) = \sum_{k=-N}^N a_k z^{k+N} }$ lie inside the unit circle, while the other $N$ lie outside.
+
+\begin{proof}
+
+  Define the polynomial
+  \[ f(z) = \sum_{k=-N}^N a_k z^k .\]
+  Because $P(\xi) > 0$ for all $\xi$, all $f(z) \neq 0$ for all $|z|=1$. We see that $f(z) = \overline{f(1/ \overline{z}})$, so the zeros of $z^N f$ come
+  in pairs, $z_j$ and $\frac{1}{\overline{z}_j}$ with $|z_j| \neq 1$. Thus we can write
+  \[ z^N f(z) = a_N \prod_{k=0}^N (z-z_k) \left( z - \frac{1}{\overline{z}_k} \right) .\]
+  Then $f(z) = a_N \prod_{k=0}^N (z-z_k) \left( \frac{1}{z} - \overline{z}_k \right)$. Define
+  \[ g(z) = \sqrt{a_N} \prod_{k=1}^N (z - z_k) \]
+  By letting $z = e^{2 \pi i x}$, we get the desired polynomial
+  \[ Q(x) = \sqrt{a_N} \prod_{k=1}^N (e^{2 \pi i x} - z_k) \]
+
+\end{proof}
 
 \end{enumerate}
 
