@@ -1,0 +1,84 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amstext,amssymb,enumerate}
+\usepackage[colorlinks,citecolor=red,pagebackref,hypertexnames=false]{hyperref}
+%\usepackage[backrefs]{amsrefs}
+
+
+
+\begin{document}
+
+
+{\bf{Homework \#2}}
+
+
+Due in class on Monday, Sep 26.
+
+
+\begin{enumerate}
+
+\item Poisson kernel: for $0<r<1$, define the Poisson kernel  as $$P_r (t) = \sum_{n=-\infty}^\infty r^{|n|} e^{2\pi i nt}$$ for $t\in \mathbb T$.
+
+\begin{enumerate}[(a)]
+\item Prove that $\displaystyle{P_r (t) = \textup{Re } \frac{1+ r e^{2\pi i t}}{1- r e^{2\pi i t}} = \frac{1-r^2}{1-2r \cos (2\pi t) + r^2}}$.
+\item Deduce that that the family $P_r(t)$ is an approximate identity as $r \rightarrow 1^-$ and observe that $P_r (t)$ is decreasing in $t$ on $[0,1/2)$.
+\item Define the conjugate Poisson kernel $$Q_r (t) = -i \sum_{n=-\infty}^\infty \textup{sgn}\, (n) r^{|n|} e^{2\pi i nt}$$ for $t\in \mathbb T$. Show that $\displaystyle{Q_r (t) =  \frac{2r \sin (2\pi t)}{1-2r \cos (2\pi t) + r^2}}$.
+\item Let $f\in L^1 (\mathbb T)$ be real-valued. Prove that the function $ z  \rightarrow (P_r \ast f ) (t) + i (Q_r \ast f) (t)$ is analytic in $z = r e^{2\pi i t}$ on the open unit disc $\{ z \in \mathbb C: \, |z|< 1\}$.
+\item Conclude that the functions $u (z) = (P_r \ast f ) (t)$ and $v (z) = (Q_r \ast f ) (t)$ are conjugate are conjugate {\it{harmonic}} functions on the open unit disc. In which sense does $f$ represent the boundary value of $u$?
+
+(see Grafakos,  Ex. 3.1.7 and 4.1.4)
+
+\begin{solution}
+
+  \begin{enumerate}
+    \item
+      \begin{align*}
+        P_r(t) &= \sum_{n=-\infty}^\infty r^{|n|} e^{2\pi i n t} \\
+        &= \sum_{n=0}^{\infty} r^{n} e^{2 \pi i n t} + \sum_{n=0}^\infty r^n e^{- 2 \pi i n t} - 1 \\
+        &=
+      \end{align*}<++>
+
+    \item
+      \begin{align*}
+        \int_{0}^{1} P_r(t) dt &= \int_{0}^{1}
+      \end{align*}<++>
+
+    \item
+
+    \item
+
+    \item
+  \end{enumerate}<++>
+
+\end{solution}
+
+\end{enumerate}
+
+\item (Fej\'er's lemma). Let $f \in L^1 (\mathbb T) $ and $g \in L^\infty (\mathbb T)$. Prove that $$\lim_{n \rightarrow \infty }  \int\limits_{\mathbb T} f(t ) g (nt) \,dt  = \widehat{f} (0) \widehat{g} (0).$$
+
+(See Katznelson, Ch. 1, Sec. 2, Ex. 8)
+
+
+\item  Let $f \in L^1 (\mathbb T)$. Show that if $\sum | \widehat{f} (n) | |n|^{-m} < \infty$, then $f$ is $m$ times continuously differentiable.
+
+Deduce that, if $\widehat{f} (n ) = \mathcal O (|n|^{-k})$ for $k>2$ and $$ m = \begin{cases} k-2 \quad k \textup{ integer, } \\ [k]-1 \quad \textup{ otherwise, } \end{cases}$$ then $f$ is $m$ times continuously differentiable.
+
+(See Katznelson, Ch. 1, Sec. 4, Ex. 2)
+
+\item Let $f \in L^1 (\mathbb T)$ and $ \widehat{f} (n ) = \mathcal O (|n|^{-k})$. Show that $f$ is $m$-times  differentiable with $f^{(m)} \in L^2$ provided $k> m +\frac12$.
+
+(See Katznelson, Ch. 1, Sec. 5, Ex. 5)
+
+\item Katznelson: Chapter 1, Section 3, Exercise 1 (see this section posted in moodle): Let $f \in L^ 1(\mathbb T)$ and let $0< \alpha \le1$. Assume that $f$ satisfies Lipschitz (H\"older) condition of order $\alpha$ at the point $t_0$. Prove that
+$$ \big| \sigma_N f (t_0)   - f(t_0) \big| \le C N^{-\alpha} \,\,\,\,\, \textup{ for } \,\, \alpha<1,$$
+and
+$$ \big| \sigma_N f (t_0)   - f(t_0) \big| \le C \frac{\log N}{N} \,\,\,\,\, \textup{ for } \,\, \alpha=1,$$
+where $\sigma_N f $ is the $N^{th}$ Fej\'er (Ces\`aro) mean of the Fourier series of $f$.
+
+\end{enumerate}
+
+
+
+
+
+\end{document}
