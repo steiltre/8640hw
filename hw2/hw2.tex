@@ -1,30 +1,57 @@
-\documentclass[12pt]{article}
+%        File: hw2.tex
+%     Created: Thu Sep 22 11:00 AM 2016 C
+% Last Change: Thu Sep 22 11:00 AM 2016 C
+%
 
-\usepackage{amsmath,amstext,amssymb,enumerate}
-\usepackage[colorlinks,citecolor=red,pagebackref,hypertexnames=false]{hyperref}
-%\usepackage[backrefs]{amsrefs}
+\documentclass[a4paper]{article}
 
+\title{Math 8640 Homework 2 }
+\date{9/26/16}
+\author{Trevor Steil}
 
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{esint}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{claim}{Claim}
+\newtheorem*{problem}{Problem}
+%\newtheorem*{lemma}{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\supp}[1]{\mathop{\mathrm{supp}}\left(#1\right)}
+\newcommand{\lip}[1]{\mathop{\mathrm{Lip}}\left(#1\right)}
+\newcommand{\curl}{\mathrm{curl}}
+\newcommand{\la}{\left \langle}
+\newcommand{\ra}{\right \rangle}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\newenvironment{solution}{\emph{Solution.}}
 
 \begin{document}
-
-
-{\bf{Homework \#2}}
-
-
-Due in class on Monday, Sep 26.
-
+\maketitle
 
 \begin{enumerate}
 
 \item Poisson kernel: for $0<r<1$, define the Poisson kernel  as $$P_r (t) = \sum_{n=-\infty}^\infty r^{|n|} e^{2\pi i nt}$$ for $t\in \mathbb T$.
 
-\begin{enumerate}[(a)]
+\begin{enumerate}
+
 \item Prove that $\displaystyle{P_r (t) = \textup{Re } \frac{1+ r e^{2\pi i t}}{1- r e^{2\pi i t}} = \frac{1-r^2}{1-2r \cos (2\pi t) + r^2}}$.
 \item Deduce that that the family $P_r(t)$ is an approximate identity as $r \rightarrow 1^-$ and observe that $P_r (t)$ is decreasing in $t$ on $[0,1/2)$.
 \item Define the conjugate Poisson kernel $$Q_r (t) = -i \sum_{n=-\infty}^\infty \textup{sgn}\, (n) r^{|n|} e^{2\pi i nt}$$ for $t\in \mathbb T$. Show that $\displaystyle{Q_r (t) =  \frac{2r \sin (2\pi t)}{1-2r \cos (2\pi t) + r^2}}$.
 \item Let $f\in L^1 (\mathbb T)$ be real-valued. Prove that the function $ z  \rightarrow (P_r \ast f ) (t) + i (Q_r \ast f) (t)$ is analytic in $z = r e^{2\pi i t}$ on the open unit disc $\{ z \in \mathbb C: \, |z|< 1\}$.
 \item Conclude that the functions $u (z) = (P_r \ast f ) (t)$ and $v (z) = (Q_r \ast f ) (t)$ are conjugate are conjugate {\it{harmonic}} functions on the open unit disc. In which sense does $f$ represent the boundary value of $u$?
+
+\end{enumerate}
 
 (see Grafakos,  Ex. 3.1.7 and 4.1.4)
 
@@ -52,12 +79,9 @@ Due in class on Monday, Sep 26.
 
 \end{solution}
 
-\end{enumerate}
-
 \item (Fej\'er's lemma). Let $f \in L^1 (\mathbb T) $ and $g \in L^\infty (\mathbb T)$. Prove that $$\lim_{n \rightarrow \infty }  \int\limits_{\mathbb T} f(t ) g (nt) \,dt  = \widehat{f} (0) \widehat{g} (0).$$
 
 (See Katznelson, Ch. 1, Sec. 2, Ex. 8)
-
 
 \item  Let $f \in L^1 (\mathbb T)$. Show that if $\sum | \widehat{f} (n) | |n|^{-m} < \infty$, then $f$ is $m$ times continuously differentiable.
 
@@ -79,6 +103,6 @@ where $\sigma_N f $ is the $N^{th}$ Fej\'er (Ces\`aro) mean of the Fourier serie
 
 
 
-
-
 \end{document}
+
+
