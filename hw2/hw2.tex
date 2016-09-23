@@ -140,6 +140,48 @@
 
 (See Katznelson, Ch. 1, Sec. 2, Ex. 8)
 
+\begin{proof}
+
+  First, assume $f$ is a trigonometric polynomial. Then we can write $f(t) = \frac{l \in \Z}{c_l} e^{2 \pi i l t}$ and $\hat{f}(0) = c_0$. Define $g_n(t) = g(nt)$. $g \in
+  L^{\infty} \supset L^2$, so we can write the Fourier expansion of $g$
+  \[ g(t) \sim \sum_{k \in \Z} \hat{g}_k e^{2 \pi i k t} .\]
+  Then $g_n$ can be expanded in a Fourier series as
+  \begin{align*}
+    g_n(t) &= g(nt) \\
+    &\sim \sum_{k \in \Z} \hat{g}_k e^{2 \pi i k n t} \\
+    &= \sum_{m=kn, k \in \Z} \hat{g} \left(\frac{m}{n} \right) e^{2 \pi i m t}
+  \end{align*}
+  So we have the Fourier coefficients of $g_n$ are
+  \[ \hat{g}_n(m) =
+    \begin{cases}
+      \hat{g} \left( \frac{m}{n} \right) &\text{if } m = kn \text{ for some } k \in \Z \\
+      0 &\text{else}
+    \end{cases}
+  \]
+
+  We have
+  \begin{align*}
+    \int_{0}^{1} f(t) g(nt) dt &= \int_{0}^{1} \sum_{l \in \Z} c_l e^{2 \pi i l t} g(nt) dt \\
+    &= \sum_{l \in \Z} c_l \int_{0}^{1} e^{2 \pi i l t} g_n(t) dt \quad \text{by Dominated Convergence} \\
+    &= \sum_{l \in \Z} c_l \hat{g}_n (l) \\
+    &= \sum_{k \in \Z} c_{kn} \hat{g} (k) \\
+    &= c_0 \hat{g}(0) + \sum_{k \neq 0} c_{kn} \hat{g}(k) \\
+    &\to c_0 \hat{g}(0) \text{ as } n \to \infty
+  \end{align*}
+
+  We know $c_0 = \hat{f}(0)$, so the claim is true for trigonometric polynomials.
+
+  Now take an arbitrary $f \in L^1$. We can approximate $f$ by a trigonometric polynomial in the $L^1$ norm. So for any $\varepsilon > 0$, we can find
+  a trigonometric polynomial $P(t)$ such that $\|f-P\|_{L^1} < \varepsilon$. Then
+  \begin{align*}
+    \left| \int_{0}^{1} \left( f(t) - P(t) \right) g(nt) dt \right| &\leq \|g\|_{L^\infty} \|f - P\|_{L^1} \\
+    &< \|g\|_{L^\infty} \varepsilon
+  \end{align*}
+
+  Letting $\varepsilon \to 0$, we get the result for all $f \in L^{1}$.
+
+\end{proof}
+
 \item  Let $f \in L^1 (\mathbb T)$. Show that if $\sum | \widehat{f} (n) | |n|^{-m} < \infty$, then $f$ is $m$ times continuously differentiable.
 
 Deduce that, if $\widehat{f} (n ) = \mathcal O (|n|^{-k})$ for $k>2$ and $$ m = \begin{cases} k-2 \quad k \textup{ integer, } \\ [k]-1 \quad \textup{ otherwise, } \end{cases}$$ then $f$ is $m$ times continuously differentiable.
