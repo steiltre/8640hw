@@ -1,30 +1,57 @@
-\documentclass[12pt]{article}
+%        File: hw2.tex
+%     Created: Thu Sep 22 11:00 AM 2016 C
+% Last Change: Thu Sep 22 11:00 AM 2016 C
+%
 
-\usepackage{amsmath,amstext,amssymb,enumerate}
-\usepackage[colorlinks,citecolor=red,pagebackref,hypertexnames=false]{hyperref}
-%\usepackage[backrefs]{amsrefs}
+\documentclass[a4paper]{article}
 
+\title{Math 8640 Homework 2 }
+\date{9/26/16}
+\author{Trevor Steil}
 
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{esint}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{claim}{Claim}
+\newtheorem*{problem}{Problem}
+%\newtheorem*{lemma}{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\supp}[1]{\mathop{\mathrm{supp}}\left(#1\right)}
+\newcommand{\lip}[1]{\mathop{\mathrm{Lip}}\left(#1\right)}
+\newcommand{\curl}{\mathrm{curl}}
+\newcommand{\la}{\left \langle}
+\newcommand{\ra}{\right \rangle}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\newenvironment{solution}{\emph{Solution.}}
 
 \begin{document}
-
-
-{\bf{Homework \#2}}
-
-
-Due in class on Monday, Sep 26.
-
+\maketitle
 
 \begin{enumerate}
 
 \item Poisson kernel: for $0<r<1$, define the Poisson kernel  as $$P_r (t) = \sum_{n=-\infty}^\infty r^{|n|} e^{2\pi i nt}$$ for $t\in \mathbb T$.
 
-\begin{enumerate}[(a)]
+\begin{enumerate}
+
 \item Prove that $\displaystyle{P_r (t) = \textup{Re } \frac{1+ r e^{2\pi i t}}{1- r e^{2\pi i t}} = \frac{1-r^2}{1-2r \cos (2\pi t) + r^2}}$.
 \item Deduce that that the family $P_r(t)$ is an approximate identity as $r \rightarrow 1^-$ and observe that $P_r (t)$ is decreasing in $t$ on $[0,1/2)$.
 \item Define the conjugate Poisson kernel $$Q_r (t) = -i \sum_{n=-\infty}^\infty \textup{sgn}\, (n) r^{|n|} e^{2\pi i nt}$$ for $t\in \mathbb T$. Show that $\displaystyle{Q_r (t) =  \frac{2r \sin (2\pi t)}{1-2r \cos (2\pi t) + r^2}}$.
 \item Let $f\in L^1 (\mathbb T)$ be real-valued. Prove that the function $ z  \rightarrow (P_r \ast f ) (t) + i (Q_r \ast f) (t)$ is analytic in $z = r e^{2\pi i t}$ on the open unit disc $\{ z \in \mathbb C: \, |z|< 1\}$.
 \item Conclude that the functions $u (z) = (P_r \ast f ) (t)$ and $v (z) = (Q_r \ast f ) (t)$ are conjugate are conjugate {\it{harmonic}} functions on the open unit disc. In which sense does $f$ represent the boundary value of $u$?
+
+\end{enumerate}
 
 (see Grafakos,  Ex. 3.1.7 and 4.1.4)
 
@@ -35,29 +62,125 @@ Due in class on Monday, Sep 26.
       \begin{align*}
         P_r(t) &= \sum_{n=-\infty}^\infty r^{|n|} e^{2\pi i n t} \\
         &= \sum_{n=0}^{\infty} r^{n} e^{2 \pi i n t} + \sum_{n=0}^\infty r^n e^{- 2 \pi i n t} - 1 \\
-        &=
-      \end{align*}<++>
+        &= \frac{1}{1-r e^{2\pi i t}} + \frac{1}{1 - r e^{-2 \pi i t}} - 1 \\
+        &= \frac{2 - re^{2 \pi i t} - re^{-2 \pi i t}}{1 - r e^{2\pi i t} - re^{-2 \pi i t} + r^2} - 1 \\
+        &= \frac{1 - r^2}{1 - 2 r \cos (2 \pi t) + r^2} \\
+        &= Re \left( \frac{1 + 2i \sin( 2\pi t) - r^2}{1 - 2 \cos (2 \pi t) + r^2} \right) \\
+        &= Re \left( \frac{1 -r e^{-2 \pi i t} + r e^{2 \pi i t} - r^2}{1 - re^{2 \pi i t} - re^{-2 \pi i t} + r^2} \right) \\
+        &= Re \left( \frac{1 + r e^{2 \pi i t}}{1 - re^{2\pi i t}} \cdot \frac{1 - re^{-2\pi i t}}{1 - re^{-2\pi i t}} \right) \\
+        &= Re \left( \frac{1 + r e^{2 \pi i t}}{1 - re^{2 \pi i t}} \right)
+      \end{align*}
 
     \item
       \begin{align*}
-        \int_{0}^{1} P_r(t) dt &= \int_{0}^{1}
-      \end{align*}<++>
+        \int_{0}^{1} P_r(t) dt &= \int_{0}^{1} \sum_{n=-\infty}^\infty r^{|n|} e^{2 \pi i n t} dt \\
+        &= \sum_{n = -\infty}^\infty r^{|n|} \int_{0}^{1} e^{2 \pi i n t} dt \quad \text{by Dominated Convergence} \\
+        &= 1 \quad \text{by periodicity}
+      \end{align*}
+
+      For $r < 1$, we see the numerator in
+      \[ P_r(t) = \frac{1 - r^{2}}{1 - 2r \cos(2 \pi t) + r^2} \]
+      is positive. The quadratic formula, the roots of the denomiator are
+      \begin{equation*}
+        \frac{2 \cos(2 \pi t) \pm \sqrt{4( \cos^2(2 \pi t) - 1)}}{2} = \cos(2 \pi t) \pm \sqrt{ - \sin^2 (2 \pi t) }
+      \end{equation*}
+      which is imaginary, so $P_r(t)$ is positive and $\|P_r(t)\|_{L^1} = 1$ by the calculation above.
+
+      Now let $\delta > 0$. For $t \in [\delta, 1 - \delta]$, $\cos( 2 \pi t )$ is bounded away from $1$, that is, we can find an $M < 1$ such that
+      $\cos( 2 \pi t ) \leq M$. Therefore,
+      \begin{align*}
+        \int_{\delta}^{1 - \delta} P_r(t) dt &= \int_{\delta}^{1-\delta} \frac{1-r^2}{1 - 2r\cos(2 \pi t) + r^2} dt \\
+        &\leq \int_{\delta}^{1-\delta} \frac{1-r^2}{1-2M \cdot r + r^2} dt \\
+        &\leq \frac{1-r^2}{1 - 2M \cdot r + r^2}
+      \end{align*}
+      By letting $r \to 1^-$, we see
+      \[ \int_{\delta}^{1-\delta} P_r(t) dt = 0 .\]
+      Thus, $\{ P_r(t) \}$ is an approximate identity.
+      On $[0, \frac{1}{2})$, $\cos(2 \pi t)$ is decreasing, so $P_r(t)$ is as well.
+
+    \item
+      We have
+      \begin{align*}
+        Q_r(t) &= -i \sum_{n=-\infty}^\infty sgn(n) r^{|n|} e^{2 \pi i n t} \\
+        &= -i \sum_{n=1}^\infty r^{n} re^{2 \pi i n t} + i \sum_{n=1}^\infty r^{n} re^{-2 \pi i n t} \\
+        &= -i \frac{1}{1 - re^{2 \pi i t}} + i \frac{1}{1 - re^{- 2 \pi i t}} \\
+        &= -i \frac{re^{2 \pi i t} - re^{-2 \pi i t}}{1 - 2r \cos(2 \pi t) + r^2} \\
+        &= \frac{2r \sin(2 \pi t)}{1 - 2r \cos( 2 \pi t ) + r^2}
+      \end{align*}
+
+    \item
+      We can calculate
+      \begin{align*}
+        (P_r \ast f)(t) &= \int_{0}^{1} \sum_{n=-\infty}^\infty r^{|n|} e^{2 \pi i n(t-s)} f(s) ds \\
+          &= \sum_{n=-\infty}^\infty r^{|n|} e^{2 \pi i n t} \int_{0}^{1} e^{-2 \pi i n s} f(s) ds \quad \text{by Dominated Convergence}\\
+          &= \sum_{n=-\infty}^\infty \hat{f}_n r^{|n|} e^{2 \pi i n t}
+      \end{align*}
+
+      Similarly,
+      \begin{align*}
+        i (Q_r \ast f)(t) &= \sum_{n=1}^\infty r^n \hat{f}_n e^{2 \pi i n t} - \sum_{n=1}^\infty r^n \hat{f}_n e^{- 2 \pi i n t}
+      \end{align*}
+      because of the $sgn(n)$ in $Q_r(t)$.
+
+      Therefore,
+      \[ (P_r \ast f)(t) + i (Q_r \ast f)(t) = \sum_{n=1}^\infty \hat{f}_n \left(r e^{2 \pi i t} \right)^n .\]
+      This is a convergent power series in $z = re^{2\pi t}$ for $r < 1$ because $\hat{f} \to 0$ by Riemann Lebesgue, and in particular, $\{
+        \hat{f}_n\}$ is bounded.
 
     \item
 
-    \item
-
-    \item
+      The real and imaginary parts of a complex analytic function satisfy the Cauchy-Riemann equations and are therefore conjugate harmonic. Thus,
+      $(P_r \ast f)(t)$ and $(Q_r \ast f)(t)$ are conjugate harmonic. $u$ and $f$ agree on the unit circle in the sense that \linebreak \large{\textbf{fill in
+      later}}
   \end{enumerate}<++>
 
 \end{solution}
-
-\end{enumerate}
 
 \item (Fej\'er's lemma). Let $f \in L^1 (\mathbb T) $ and $g \in L^\infty (\mathbb T)$. Prove that $$\lim_{n \rightarrow \infty }  \int\limits_{\mathbb T} f(t ) g (nt) \,dt  = \widehat{f} (0) \widehat{g} (0).$$
 
 (See Katznelson, Ch. 1, Sec. 2, Ex. 8)
 
+\begin{proof}
+
+  First, assume $f$ is a trigonometric polynomial. Then we can write $f(t) = \frac{l \in \Z}{c_l} e^{2 \pi i l t}$ and $\hat{f}(0) = c_0$. Define $g_n(t) = g(nt)$. $g \in
+  L^{\infty} \supset L^2$, so we can write the Fourier expansion of $g$
+  \[ g(t) \sim \sum_{k \in \Z} \hat{g}_k e^{2 \pi i k t} .\]
+  Then $g_n$ can be expanded in a Fourier series as
+  \begin{align*}
+    g_n(t) &= g(nt) \\
+    &\sim \sum_{k \in \Z} \hat{g}_k e^{2 \pi i k n t} \\
+    &= \sum_{m=kn, k \in \Z} \hat{g} \left(\frac{m}{n} \right) e^{2 \pi i m t}
+  \end{align*}
+  So we have the Fourier coefficients of $g_n$ are
+  \[ \hat{g}_n(m) =
+    \begin{cases}
+      \hat{g} \left( \frac{m}{n} \right) &\text{if } m = kn \text{ for some } k \in \Z \\
+      0 &\text{else}
+    \end{cases}
+  \]
+
+  We have
+  \begin{align*}
+    \int_{0}^{1} f(t) g(nt) dt &= \int_{0}^{1} \sum_{l \in \Z} c_l e^{2 \pi i l t} g(nt) dt \\
+    &= \sum_{l \in \Z} c_l \int_{0}^{1} e^{2 \pi i l t} g_n(t) dt \quad \text{by Dominated Convergence} \\
+    &= \sum_{l \in \Z} c_l \hat{g}_n (l) \\
+    &= \sum_{k \in \Z} c_{kn} \hat{g} (k) \\
+    &= c_0 \hat{g}(0) + \sum_{k \neq 0} c_{kn} \hat{g}(k) \\
+    &\to c_0 \hat{g}(0) \text{ as } n \to \infty
+  \end{align*}
+
+  We know $c_0 = \hat{f}(0)$, so the claim is true for trigonometric polynomials.
+
+  Now take an arbitrary $f \in L^1$. We can approximate $f$ by a trigonometric polynomial in the $L^1$ norm. So for any $\varepsilon > 0$, we can find
+  a trigonometric polynomial $P(t)$ such that $\|f-P\|_{L^1} < \varepsilon$. Then
+  \begin{align*}
+    \left| \int_{0}^{1} \left( f(t) - P(t) \right) g(nt) dt \right| &\leq \|g\|_{L^\infty} \|f - P\|_{L^1} \\
+    &< \|g\|_{L^\infty} \varepsilon
+  \end{align*}
+
+  Letting $\varepsilon \to 0$, we get the result for all $f \in L^{1}$.
+
+\end{proof}
 
 \item  Let $f \in L^1 (\mathbb T)$. Show that if $\sum | \widehat{f} (n) | |n|^{-m} < \infty$, then $f$ is $m$ times continuously differentiable.
 
@@ -76,8 +199,6 @@ $$ \big| \sigma_N f (t_0)   - f(t_0) \big| \le C \frac{\log N}{N} \,\,\,\,\, \te
 where $\sigma_N f $ is the $N^{th}$ Fej\'er (Ces\`aro) mean of the Fourier series of $f$.
 
 \end{enumerate}
-
-
 
 
 
