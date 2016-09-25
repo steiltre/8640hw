@@ -182,15 +182,66 @@
 
 \end{proof}
 
-\item  Let $f \in L^1 (\mathbb T)$. Show that if $\sum | \widehat{f} (n) | |n|^{-m} < \infty$, then $f$ is $m$ times continuously differentiable.
+\item  Let $f \in L^1 (\mathbb T)$. Show that if $\sum | \widehat{f} (n) | |n|^{m} < \infty$, then $f$ is $m$ times continuously differentiable.
 
 Deduce that, if $\widehat{f} (n ) = \mathcal O (|n|^{-k})$ for $k>2$ and $$ m = \begin{cases} k-2 \quad k \textup{ integer, } \\ [k]-1 \quad \textup{ otherwise, } \end{cases}$$ then $f$ is $m$ times continuously differentiable.
 
 (See Katznelson, Ch. 1, Sec. 4, Ex. 2)
 
+\begin{proof}
+
+  Let $n = 0$. Define $g_n(x) = \sum_{|k|\leq n} \hat{f}(n) e^{2\pi i k x}$. Notice that each $g_n$ is continuous. We see
+  \begin{align*}
+    \left| \sum_{k \in \Z} \hat{f}(k) e^{2\pi i k x} - g_n(x) \right| &= \left| \sum_{|k|>n} \hat{f}(k) e^{2 \pi i k x} \right| \\
+    &\leq \sum_{|k|>n} |\hat{f}(k)| \\
+    &\to 0 \text{ as } n \to \infty
+  \end{align*}
+  Because this is independent of $x$, we have uniform convergence of $g_n$. $\{ g_n \}$ is a sequence of continuous functions, so $g_n$ converges to a
+  continuous function, proving the result for $n=0$.
+
+  Now let $n = 1$. Define $g_n$ as before. By differentiating $g_n$ term-by-term, we get
+  \[ g_n'(x) = 2 \pi i \sum_{|k|\leq n} k \hat{f}(k) e^{2 \pi i k x} .\]
+  Let $g'(x) = 2 \pi i \sum_{k \in \Z} k \hat{f}(k) e^{2 \pi i k x}$. We see
+  \begin{align*}
+    \left| g'(x) - g_n'(x) \right| &= \left| 2 \pi i \sum_{|k|>n} k \hat{f}(k) e^{2 \pi i k x} \right| \\
+    &\leq 2 \pi \sum_{|k|>n} |k| |\hat{f}_k| \\
+    &\to 0 \text{ as } n \to \infty
+  \end{align*}
+
+  This is independent of $x$, so $g_n'$ converges uniformly to $g'$. Therefore, $f'(x) = g'(x)$. Also, $\{ g_n' \}$ was a sequence of continuous
+  functions, so $f'$ is continuous as well. By applying this result inductively, we get the result for any $m$.
+
+  If $\hat{f}(n) = O(|n|^{-k})$ then
+  \[ \hat{f}(n) \leq C |n|^{-k} \]
+  for some $C$. Then
+  \begin{align*}
+    \sum | \hat{f}(n)| |n|^m &\leq C \sum |n|^{m-k} \\
+    &\leq \sum |n|^{-1-\varepsilon} \text{ for some } \varepsilon>0 \\
+    &< \infty
+  \end{align*}
+  Therefore, we can apply our result to conclude that $f$ is $m$ times continuously differentiable.
+
+\end{proof}
+
 \item Let $f \in L^1 (\mathbb T)$ and $ \widehat{f} (n ) = \mathcal O (|n|^{-k})$. Show that $f$ is $m$-times  differentiable with $f^{(m)} \in L^2$ provided $k> m +\frac12$.
 
 (See Katznelson, Ch. 1, Sec. 5, Ex. 5)
+
+\begin{proof}
+
+  By problem 3, we know $f$ is $m$-times continuously differentiable. (3 was stated with an equality, but having the inequality only gives us faster
+  decay of Fourier coefficients, so it still holds.) All that remains to show is that $f^{(m)} \in L^2$.
+  \begin{align*}
+    \|f^{(m)}\|_2 &= \left\| \widehat{f^{(m)}} \right\|_2 \\
+    &= \sum_{l \in \Z} \left| (2 \pi i l)^m \hat{f}(l) \right|^2 \\
+    &\leq (2 \pi)^{2m} \sum_{l \in \Z} |l|^2m \hat{f}^{2}(l) \\
+    &\leq (2 \pi)^{2m} \sum_{l \in \Z} C |l|^{2m} |l|^{-2k} \text{ because } \hat{f}(n) = O(|n|^{-k}) \\
+    &= C^2 (2 \pi)^{2m} \sum_{l \in \Z} |l|^{2m-2k}
+  \end{align*}
+
+  Because $k > m + \frac{1}{2}$, $2m - 2k < -1$. Therefore, the series above is finite, and $f^{(m)} \in L^2$.
+
+\end{proof}
 
 \item Katznelson: Chapter 1, Section 3, Exercise 1 (see this section posted in moodle): Let $f \in L^ 1(\mathbb T)$ and let $0< \alpha \le1$. Assume that $f$ satisfies Lipschitz (H\"older) condition of order $\alpha$ at the point $t_0$. Prove that
 $$ \big| \sigma_N f (t_0)   - f(t_0) \big| \le C N^{-\alpha} \,\,\,\,\, \textup{ for } \,\, \alpha<1,$$
