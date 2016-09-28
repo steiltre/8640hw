@@ -43,6 +43,23 @@
 
 \item Let $f_k$, $f$ be Schwartz functions on $\mathbb R^n$, $f_k$, $f\in \mathcal S (\mathbb R^n)$. Assume that $f_k \rightarrow f $ in $\mathcal S$. Prove that $\widehat{f_k} \rightarrow \widehat{f} $ in $\mathcal S$.
 
+  \begin{proof}
+
+    Because $f_k - f \to 0$ in $S$, we know $\rho_{\alpha, \beta} (f_k - f) \to 0$ for all $\alpha, \beta$. Then
+    \begin{align*}
+      \rho_{\alpha, \beta} ( \hat{f}_k - \hat{f} ) &= \left\| |\xi|^\alpha D^\beta \left( \hat{f}_k - \hat{f} \right) \right\|_\infty \\
+      &= \left\| |\xi|^\alpha \left( \left(-2\pi i \right)^{\beta} |x|^\beta \left( f_k - f \right) \right)^{\widehat{}} \ \right\|_\infty \\
+      &= \left\| \left( D^\alpha \left( |x|^\beta (f_k - f) \right) \right)^{\widehat{}} \ \right\|_\infty \\
+      &\leq \left\| D^\alpha \left( |x|^\beta (f_k - f) \right) \right\|_1
+    \end{align*}
+
+    Expanding derivatives and using the fact that $f_k \to f$ in $S$, we see that $D^\alpha \left( |x|^\beta(f_k - f) \right) \in S$ and $D^\alpha
+    \left( |x|^\beta (f_k - f) \right) \to 0$ in $S$. Therefore,
+    \[ \left\| D^\alpha \left( |x|^\beta (f_k - f) \right) \right\|_1 \to 0 \]
+    Thus, $\rho_{\alpha, \beta} (\hat{f}_k - \hat{f}) \to 0$ for all $\alpha, \beta$, and $\hat{f}_k \to f$ in $S$.
+
+  \end{proof}
+
 \item Find the eigenvalues of the Fourier transform (as an operator $\mathcal S (\mathbb R)$ or $L^2 (\mathbb R)$).
 
   \begin{solution}
@@ -63,6 +80,25 @@
   \end{solution}
 
 \item Let $f \in \mathcal S (\mathbb R)$. Prove that  $$ \| f \|_\infty^2 \le  2 \| f \|_p \, \| f' \|_q,$$ where $\frac1{p} + \frac1{q} = 1$, $p$, $q \ge1$.
+
+  \begin{proof}
+
+    By the Fundamental Theorem of Calculus,
+    \begin{align*}
+      (f(x))^2 &= \int_{-\infty}^{x} \frac{d}{dt} (f(t))^2 dt \\
+      &= \int_{\infty}^{x} 2 f(t) f'(t) dt
+    \end{align*}
+
+    Letting $\mu$ denote Lebesgue measure, we have
+    \begin{align*}
+      \|f\|_\infty^2 &= \| f^2 \|_\infty \\
+      &= \inf \left\{ a\geq 0 : \mu \left( \{ x : f^2(x) > a \} \right) = 0 \right\} \\
+      &= \inf \left\{ a \geq 0 : \mu \left( \{x : \int_{-\infty}^{x} 2 f(t) f'(t) dt > a \} \right) = 0 \right\} \\
+      &\leq 2 \|f\|_p \|f'\|_q
+    \end{align*}
+    by H\"older's inequality.
+
+  \end{proof}
 
 
 \item Let $f \in L^ 2 (\mathbb R)$. Prove that the translates of $f$ generate $L^2(\mathbb R)$ (i.e. the closed linear span of $ \{ f(\cdot + h)  \}_{h\in \mathbb R}$ is $L^ 2 (\mathbb R)$)  if and only if $\widehat{f} \neq 0$ almost everywhere.
