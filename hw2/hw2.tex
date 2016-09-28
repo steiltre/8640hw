@@ -55,6 +55,8 @@
 
 (see Grafakos,  Ex. 3.1.7 and 4.1.4)
 
+\pagebreak
+
 \begin{solution}
 
   \begin{enumerate}
@@ -80,7 +82,7 @@
 
       For $r < 1$, we see the numerator in
       \[ P_r(t) = \frac{1 - r^{2}}{1 - 2r \cos(2 \pi t) + r^2} \]
-      is positive. The quadratic formula, the roots of the denomiator are
+      is positive. By the quadratic formula, the roots of the denomiator are
       \begin{equation*}
         \frac{2 \cos(2 \pi t) \pm \sqrt{4( \cos^2(2 \pi t) - 1)}}{2} = \cos(2 \pi t) \pm \sqrt{ - \sin^2 (2 \pi t) }
       \end{equation*}
@@ -130,9 +132,9 @@
     \item
 
       The real and imaginary parts of a complex analytic function satisfy the Cauchy-Riemann equations and are therefore conjugate harmonic. Thus,
-      $(P_r \ast f)(t)$ and $(Q_r \ast f)(t)$ are conjugate harmonic. $u$ and $f$ agree on the unit circle in the sense that \linebreak \large{\textbf{fill in
-      later}}
-  \end{enumerate}<++>
+      $(P_r \ast f)(t)$ and $(Q_r \ast f)(t)$ are conjugate harmonic. $f$ gives the boundary values for $u$ in the sense that the values for $u$ on
+      the unit circle are given by $f$ and its conjugate function.
+  \end{enumerate}
 
 \end{solution}
 
@@ -142,8 +144,8 @@
 
 \begin{proof}
 
-  First, assume $f$ is a trigonometric polynomial. Then we can write $f(t) = \frac{l \in \Z}{c_l} e^{2 \pi i l t}$ and $\hat{f}(0) = c_0$. Define $g_n(t) = g(nt)$. $g \in
-  L^{\infty} \supset L^2$, so we can write the Fourier expansion of $g$
+  First, assume $f$ is a trigonometric polynomial. Then we can write $f(t) = \sum_{l \in \Z} c_l e^{2 \pi i l t}$ and $\hat{f}(0) = c_0$. Define $g_n(t) = g(nt)$. $g \in
+  L^{\infty} \subset L^2$, so we can write the Fourier expansion of $g$
   \[ g(t) \sim \sum_{k \in \Z} \hat{g}_k e^{2 \pi i k t} .\]
   Then $g_n$ can be expanded in a Fourier series as
   \begin{align*}
