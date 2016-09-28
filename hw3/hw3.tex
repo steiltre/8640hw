@@ -1,0 +1,94 @@
+%        File: hw3.tex
+%     Created: Tue Sep 27 08:00 PM 2016 C
+% Last Change: Tue Sep 27 08:00 PM 2016 C
+%
+
+\documentclass[a4paper]{article}
+
+\title{Math 8640 Homework 3}
+\date{10/5/16}
+\author{Trevor Steil}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{esint}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{claim}{Claim}
+\newtheorem*{problem}{Problem}
+%\newtheorem*{lemma}{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\supp}[1]{\mathop{\mathrm{supp}}\left(#1\right)}
+\newcommand{\lip}[1]{\mathop{\mathrm{Lip}}\left(#1\right)}
+\newcommand{\curl}{\mathrm{curl}}
+\newcommand{\la}{\left \langle}
+\newcommand{\ra}{\right \rangle}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\newenvironment{solution}{\emph{Solution.}}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+
+\item Let $f_k$, $f$ be Schwartz functions on $\mathbb R^n$, $f_k$, $f\in \mathcal S (\mathbb R^n)$. Assume that $f_k \rightarrow f $ in $\mathcal S$. Prove that $\widehat{f_k} \rightarrow \widehat{f} $ in $\mathcal S$.
+
+\item Find the eigenvalues of the Fourier transform (as an operator $\mathcal S (\mathbb R)$ or $L^2 (\mathbb R)$).
+
+  \begin{solution}
+    Assume $\mathcal{F} f = \lambda f$ for some $\lambda \in \C$. Then taking the inverse Fourier transform gives
+    \[ f = \lambda \mathcal{F}^{-1} f .\]
+    Therefore,
+    \begin{align*}
+      \mathcal{F} f(\xi) &= \lambda^2 \mathcal{F}^{-1} f(\xi) \\
+      &= \lambda^2 \int_{\R^n}^{} f(x) e^{2 \pi i x \cdot \xi} dx \\
+      &= \lambda^2 \mathcal{F} f(-\xi)
+    \end{align*}
+
+    Going through this argument twice gives
+    \[ \mathcal{F} f (\xi) = \lambda^4 \mathcal{F} f (\xi) .\]
+
+    Therefore, $\lambda \in \{ \pm 1, \pm i \}$.
+
+  \end{solution}
+
+\item Let $f \in \mathcal S (\mathbb R)$. Prove that  $$ \| f \|_\infty^2 \le  2 \| f \|_p \, \| f' \|_q,$$ where $\frac1{p} + \frac1{q} = 1$, $p$, $q \ge1$.
+
+
+\item Let $f \in L^ 2 (\mathbb R)$. Prove that the translates of $f$ generate $L^2(\mathbb R)$ (i.e. the closed linear span of $ \{ f(\cdot + h)  \}_{h\in \mathbb R}$ is $L^ 2 (\mathbb R)$)  if and only if $\widehat{f} \neq 0$ almost everywhere.
+
+Hint: One (perhaps, the simplest) possible approach uses the Hahn-Banach theorem.
+
+\item See \#2, page 125 in Stein--Shakarchi.
+
+
+\begin{enumerate}
+
+\item (Weyl differencing) Let $S_N = \sum_{n=1}^N e^{2\pi i f(n)}$. Show that for $H\le N$, one has  $$ |S_N|^2 \le c \frac{N}{H}  \sum_{h=0}^H \bigg| \sum_{n=1}^{N-h} e^{2\pi i \big( f(n+h)  - f (n) \big)}  \bigg|,  $$ for some constant $c>0$  independent of $N$, $H$, and $f$.
+
+Hint: Use the identity $H \sum_n a_n = \sum_{k=1}^H \sum_n a_{n+k}$ and apply Cauchy--Schwarz.
+
+\item Deduce that if the  sequence of differences $\{ \theta_{n+h} - \theta_n \} $ is uniformly distributed mod 1 for all $h \in \mathbb N$, then the original sequence $\{ \theta_n \}$ is uniformly distributed mod 1.
+
+Hint: Use Weyl's equidistribution theorem and part (a).
+
+\item Deduce that the sequence $\{ n^2 \theta \}$ is uniformly distributed  if $\theta$ is irrational.
+
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+
+
