@@ -77,6 +77,33 @@
 
     Therefore, $\lambda \in \{ \pm 1, \pm i \}$.
 
+    We know $\mathcal{F} (e^{-\pi x^2}) (\xi) = e^{-\pi \xi^2}$, so 1 is an eigenvalue of the Fourier transform.
+
+    Also,
+    \begin{align*}
+      \mathcal{F} (-2\pi x e^{-\pi x^2})(\xi) &= \mathcal{F} \left(\frac{d}{dx} e^{-\pi x^2} \right) (\xi) \\
+      &= 2 \pi i \xi e^{- \pi \xi^2}
+    \end{align*}
+    Therefore, $-i$ is an eigenvalue.
+
+    Taking another derivative, we get
+    \begin{align*}
+      \mathcal{F} ( ( (2 \pi)^2 x^2 - 2 \pi ) e^{-\pi x^2} ) (\xi) &= \mathcal{F} \left( \frac{d^2}{dx^2} e^{-\pi x^2} \right) \\
+      &= - (2\pi)^2 \xi^2 e^{-pi \xi^2}
+    \end{align*}
+    From this, we see
+    \[ \mathcal{F} ( ( (2\pi)^2 x^2 - \pi ) e^{-\pi x^2} ) (\xi) = -( (2\pi)^2 \xi^2 - \pi)e^{-\pi \xi^2} \]
+    and -1 is an eigenvalue of the Fourier transform.
+
+    Taking yet another derivative, we get
+    \begin{align*}
+      \mathcal{F} ( ( 8\pi^3 x^3 - 12 \pi^2 x) e^{-\pi x^2})(\xi) &= \mathcal{F} \left( \frac{d^3}{dx^3} e^{-\pi x^2} \right) (\xi) \\
+      &= - 8 \pi^3 i \xi^3 e^{-\pi \xi^2}
+    \end{align*}
+    From this, we see
+    \[ \mathcal{F} ( ( 8\pi^3 x^3 -6 \pi^2 x) e^{-\pi x^2})(\xi) = ( -8\pi^3 i \xi^3 + 6 \pi^2 i \xi) e^{-\pi \xi^2} \]
+    and $-i$ is an eigenvalue of the Fourier transform.
+
   \end{solution}
 
 \item Let $f \in \mathcal S (\mathbb R)$. Prove that  $$ \| f \|_\infty^2 \le  2 \| f \|_p \, \| f' \|_q,$$ where $\frac1{p} + \frac1{q} = 1$, $p$, $q \ge1$.
