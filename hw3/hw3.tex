@@ -132,6 +132,32 @@
 
 Hint: One (perhaps, the simplest) possible approach uses the Hahn-Banach theorem.
 
+\begin{proof}
+
+  Denote the translates of $f$ by $f_h(x) = f(x+h)$ for $h \in \R$.
+
+  Assume that $\widehat{f} = 0$ almost everywhere and $\{f_h\}_{h \in \R}$ generate $L^2$. Let $g \in L^2$. Because the Fourier transform is a unitary
+  operator, $\{ \widehat{f}_h \}$ is dense in $L^2$ as well. But
+  \begin{align*}
+    \widehat{f}_h(\xi) &= e^{2\pi i h} \widehat{f} (\xi) \\
+    &= 0 \text{ almost everywhere}
+  \end{align*}
+  Therefore, $\{ \widehat{f}_h \}$ cannot be dense in $L^2$, and $\{ f_h \}$ cannot generate $L^2$.
+
+  Now assume $\widehat{f} \neq 0$ almost everywhere. Take $g \in L^2$ such that $ \la g, f_h \ra = 0$ for all $h$. Then for any $h \in \R$
+  \begin{align*}
+    0 &= \la g, f \ra \\
+    &= \la \widehat{g}, \widehat{f} \ra \\
+    &= \int_{\R}^{} \widehat{f}_h \overline{ \widehat{g} } d \xi \\
+    &= \int_{\R}^{} e^{2\pi i h \xi} \widehat{f} \overline{ \widehat{g} } d \xi \\
+    &= \mathcal{F} (\widehat{f} \overline{ \widehat{g} }) (-h)
+  \end{align*}
+
+  Therefore, $\widehat{f} \overline{ \widehat{g} } (-h) = 0$ for all $h$. Because $\widehat{f} \neq 0$ almost everywhere, $\widehat{g} = 0$ almost
+  everywhere. Therefore, $g=0$ almost everywhere, and $ \{f_h\}_{h \in \R}$ spans $L^2$.
+
+\end{proof}
+
 \item See \#2, page 125 in Stein--Shakarchi.
 
 
