@@ -209,16 +209,21 @@ Hint: Use Weyl's equidistribution theorem and part (a).
 
         Therefore,
         \[ \frac{1}{N} \sum_{n=1}^N e^{2 \pi i \theta_n} \to 0 \]
-        and $\{\theta_n\}$ is equidistributed by Weyl's Equidistribution Law.
+        Because the constant in part (i) is independent of $f$, we can replace $\theta_n$ with $k \theta_n$ for any $k$, so
+        $\{\theta_n\}$ is equidistributed by Weyl's Equidistribution Law.
 
       \item
-        We can show this using part ii. We know
+        We can show this using part (ii). We know
         \[ (n+h)^2 \theta - n^2 \theta = 2nh \theta + h^2 \theta \]
 
-        In class, we showed $2nh \theta$ is equidistributed for irrational $\theta$. Therefore,
+        In class, we showed $2nh \theta$ is equidistributed for irrational $\theta$. Therefore for any $h$,
         \begin{align*}
-          \frac{1}{N} \sum_{n=1}^N e^{2\pi i (
-        \end{align*}<++>
+          \frac{1}{N} \sum_{n=1}^N e^{2\pi i (2nh \theta + h^2 \theta)} &= e^{h^2 \theta} \frac{1}{N} \sum_{n=1}^N e^{4 \pi i n h} \\
+          &\quad \to 0 \text{ as $N \to \infty$ }
+        \end{align*}
+
+        Therefore, the sequence $\{ (n+h)^2 \theta - n^2 \theta \}$ is equidistributed. Thus by part (ii), $\{ n^2 \theta \}$ is equidistributed as
+        well.
     \end{enumerate}
 
   \end{proof}
