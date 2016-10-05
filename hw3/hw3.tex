@@ -200,8 +200,25 @@ Hint: Use Weyl's equidistribution theorem and part (a).
         \end{align*}
 
       \item
+        We have
+        \begin{align*}
+          \left| \frac{1}{N} \sum_{n=1}^N e^{2\pi i \theta_n} \right|^2 &= \frac{1}{N^2} \left| S_N \right|^2 \\
+          &\leq c \frac{1}{NH} \sum_{h=0}^H \left| \sum_{n=1}^{N-h} e^{2 \pi i \left( \theta_{n+h} - \theta_n \right)} \right| \\
+          &\quad \to 0 \quad \parbox{8cm}{because $\{ \theta_{n+h} - \theta_n \}$ is equidistributed for all $h$}
+        \end{align*}
+
+        Therefore,
+        \[ \frac{1}{N} \sum_{n=1}^N e^{2 \pi i \theta_n} \to 0 \]
+        and $\{\theta_n\}$ is equidistributed by Weyl's Equidistribution Law.
 
       \item
+        We can show this using part ii. We know
+        \[ (n+h)^2 \theta - n^2 \theta = 2nh \theta + h^2 \theta \]
+
+        In class, we showed $2nh \theta$ is equidistributed for irrational $\theta$. Therefore,
+        \begin{align*}
+          \frac{1}{N} \sum_{n=1}^N e^{2\pi i (
+        \end{align*}<++>
     \end{enumerate}
 
   \end{proof}
