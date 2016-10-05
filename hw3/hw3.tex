@@ -173,6 +173,38 @@ Hint: Use Weyl's equidistribution theorem and part (a).
 
 \item Deduce that the sequence $\{ n^2 \theta \}$ is uniformly distributed  if $\theta$ is irrational.
 
+  \begin{proof}
+
+    \begin{enumerate}
+      \item
+        Let
+        \[ a_n =
+          \begin{cases}
+            e^{2 \pi i f(n)} &\text{if } 1 \leq n \leq N \\
+            0 &\text{else}
+          \end{cases}
+        \].
+
+        Using the fact that $H \sum_{n \in \Z} a_n = \sum_{k=1}^H \sum_{n \in \Z} a_{n+k}$, we have
+        \begin{align*}
+          |S_N|^2 &= \frac{1}{H^2} \left| \sum_{n \in \Z} \sum_{k=1}^H a_{n+k} \right|^2 \\
+          &\leq \frac{N+H}{H^2} \sum_{n \in \Z} \left| \sum_{k=1}^H a_{n+k} \right|^2 \quad \parbox{3cm}{by Cauchy-Schwarz} \\
+          &\leq \frac{C N}{H^2} \sum_{n \in \Z} \left( \sum_{k=1}^H \sum_{l=1}^H a_{n+k} \overline{a}_{n+l} \right) \\
+        \end{align*}
+
+        By counting the number of times any term can appear in these sums, we get that the most any term can appear is (approximately) $H$ times, and
+        the difference between subscripts is at most $H$. Therefore, we can bound $|S_N|^2$ as
+        \begin{align*}
+          |S_N|^2 &\leq \frac{C N}{H} \sum_{h=0}^H \left| \sum_{n=1}^{N-h} a_{n+h} \overline{a}_n \right| \\
+          &= \frac{C N}{H} \sum_{h=0}^H \left| \sum_{n=1}^{N-h} e^{2 \pi i \left( f(n+h) - f(n) \right)} \right|
+        \end{align*}
+
+      \item
+
+      \item
+    \end{enumerate}
+
+  \end{proof}
 
 \end{enumerate}
 
