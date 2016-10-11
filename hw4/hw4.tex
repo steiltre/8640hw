@@ -51,6 +51,19 @@
   \item (Exercise 1.1.12 in Grafakos) Let $f_1, \dots, f_N \in L^{p,\infty}(X,\mu)$. Prove that
     \[ \left\| \sum_{j=1}^N f_j \right\|_{p,\infty} \leq N \sum_{j=1}^N \| f_j \|_{p,\infty} .\]
 
+    \begin{proof}
+
+      \begin{align*}
+        \left\| \sum_{i=1}^N f_i \right\|_{p,\infty} &= \sup \left\{ \lambda d_{\sum_i f_i}(\lambda)^{\frac{1}{p}} : \lambda>0 \right\} \\
+        &\leq \sup \left\{ \lambda \left( \sum_{i=1}^N d_{f_i} \left( \frac{\lambda}{N} \right) \right)^{\frac{1}{p}} : \lambda>0 \right\} \\
+        &\leq \sup \left\{ \lambda \sum_{i=1}^N d_{f_i} \left( \frac{\lambda}{N} \right)^{\frac{1}{p}} : \lambda >0 \right\} \quad \parbox{4cm}{for $p \geq 1$} \\
+        &= N \sup \left\{ \frac{\lambda}{N} \sum_{i=1}^N d_{f_i} \left( \frac{\lambda}{N} \right)^\frac{1}{p} : \lambda > 0 \right\} \\
+        &\leq N \sum_{i=1}^N \sup \left\{ \frac{\lambda}{N} d_{f_i} \left( \frac{\lambda}{N} \right)^\frac{1}{p} : \lambda>0 \right\} \\
+        &= N \sum_{i=1}^N \|f_i\|_{p,\infty}
+      \end{align*}
+
+    \end{proof}
+
   \item (Exercise 1.1.12 in Grafakos \textit{Normability of weak-$L^p$ for $p>1$.}) Let $(X,\mu)$ be a $\sigma$-finite measure space and let $p>1$.
     Define
     \[ | \| f \| |_{p,\infty} = \sup_{0 < \mu(E) < \infty} \mu(E)^{\frac{1}{p} - 1} \int_{E}^{}|f| d \mu .\]
@@ -59,6 +72,9 @@
       \item Prove that
         \[ | \| f \| |_{p,\infty} \leq \frac{p}{p-1} \|f\|_{p,\infty} ,\]
         where $\|f\|_{p,\infty}$ is the usual norm on $L^{p,\infty}$.
+
+      \item Prove that
+        \[ \|f\|_{p,\infty} \leq | \| f \| |_{p,\infty} .\]
 
       \item Prove that $| \| f \| |_{p,\infty}$ is a norm and deduce that $L^{p,\infty}$ is normable.
     \end{enumerate}
