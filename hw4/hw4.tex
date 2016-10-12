@@ -77,13 +77,66 @@
         \[ \|f\|_{p,\infty} \leq | \| f \| |_{p,\infty} .\]
 
       \item Prove that $| \| f \| |_{p,\infty}$ is a norm and deduce that $L^{p,\infty}$ is normable.
+
     \end{enumerate}
+
+    \begin{proof}
+
+      \begin{enumerate}
+        \item
+
+        \item
+
+        \item
+          Let $c \in \R$ and $f \in L^{p,\infty}$. Then
+          \begin{align*}
+            | \| cf \| |_{p,\infty} &= \sup_{0 < \mu(E) < \infty} \mu(E)^{\frac{1}{p}-1} \int_{E}^{} |cf| d\mu \\
+            &= c \sup_{0 < \mu(E) < \infty} \mu(E)^{\frac{1}{p} - 1} \int_{E}^{} |f| d\mu \\
+            &= c | \| f \| |_{p,\infty}
+          \end{align*}
+
+          Let $f,g \in L^{p,\infty}$. Then
+          \begin{align*}
+            | \| f+g \| |_{p,\infty} &= \sup_{0 < \mu(E) < \infty} \mu(E)^{\frac{1}{p} - 1} \int_{E}^{} |f+g| d\mu \\
+            &\leq \sup_{0 < \mu(E) < \infty} \mu(E)^{\frac{1}{p} - 1} \left( \int_{E}^{} |f| d\mu + \int_{E}^{} |g| d\mu \right) \\
+            &\leq \sup_{0 < \mu(E_1) < \infty} \mu(E_1)^{\frac{1}{p} - 1} \int_{E_1}^{} |f| d\mu + \sup_{0 < \mu(E_2) < \infty}
+            \mu(E_2)^{\frac{1}{p} - 1} \int_{E_2}^{} |g| d\mu \\
+            &= | \|f\| |_{p,\infty} + | \|g\| |_{p,\infty}
+          \end{align*}
+
+          Let $f \in L^{p,\infty}$ with $f \neq 0 \ a.e.$ Then there is some set $U$ with $0 < \mu(U) < \infty$ such that $|f|>0$ on $U$. Then
+          \begin{align*}
+            | \| f \| |_{p,\infty} &= \sup_{0 < \mu(E) < \infty} \mu(E)^{\frac{1}{p}-1} \int_{E}^{} |f| d\mu \\
+            &\geq \mu(U)^{\frac{1}{p}-1} \int_{U}^{} |f| d\mu \\
+            &>0
+          \end{align*}
+
+          Therefore, $| \| \cdot \| |_{p,\infty}$ is a norm on $L^{p,\infty}$ and $L^{p,\infty}$ is normable.
+      \end{enumerate}
+
+    \end{proof}
 
   \item (Exercise 2.1.13 in Grafakos) Observe that in the proof of the weak-(1,1) boundedness of the Hardy-Littlewood maximal function we have
     actually obtained the inequality
     \[ \lambda \cdot \mu( \{ M(f) > \lambda \} )^{\frac{1}{p}} \leq 3^n \mu( \{M(f) > \lambda \})^{\frac{1}{p} - 1} \int_{\{M(f)>\lambda\}}^{} |f|
     d\mu \]
     for $\lambda > 0$ and $f$ locally integrable. Use this fact and the previous exercise to deduce that $M$ maps $L^{p,\infty}$ into itself.
+
+    \begin{proof}
+
+      Let $f \in L^{p,\infty}$ for $p>1$. Then by definition, we have
+      \begin{align*}
+        \lambda \cdot \mu( \{M(f) > \lambda \})^{\frac{1}{p}} &\leq 3^n \mu( \{ M(f) > \lambda \} )^{\frac{1}{p}-1} \int_{\{ M(f) > \lambda \}}^{} |f|
+        d\mu \\
+        &\leq 3^n \sup_{0 < \mu(E) < \infty} \mu(E)^{\frac{1}{p}-1} \int_{E}^{} |f| d\mu \\
+        &\leq 3^n \frac{p}{p-1} \|f\|_{p,\infty} \quad \parbox{5cm}{by Problem 3}
+      \end{align*}
+
+      Taking the supremum over all $\lambda$, we have
+      \[ \| M(f) \|_{p,\infty} \leq 3^n \frac{p}{p-1} \|f\|_{p,\infty} \]
+      and $M$ maps $L^{p,\infty}$ to itself.
+
+    \end{proof}
 \end{enumerate}
 
 \end{document}
