@@ -84,8 +84,40 @@
 
       \begin{enumerate}
         \item
+          Let $E$ be a set with $0<\mu(E)<\infty$. We have
+          \begin{align*}
+            \int_{E}^{} |f(x)| dx &= \int_{0}^{\infty} \mu( E \cap \{ |f| > \lambda \} ) d\lambda \\
+            &\leq \int_{0}^{\infty} \min \{ \mu(E), d_f(\lambda) \} d\lambda \\
+            &\leq \int_{0}^{\infty} \min \{ \mu(E), \lambda^{-p} \|f\|_{p,\infty}^p \} d\lambda
+          \end{align*}
+
+          Now, we are able to split our integral at any value $\alpha$ and use $\mu(E)$ with the finite interval and $\lambda^{-p} \|f\|_{p,\infty}^p$
+          on the infinite interval. By optimizing the resulting inequality, we find the best splitting happens at $\alpha =
+          \mu(E)^{-\frac{1}{p}} \|f\|_{p,\infty}$. This gives us
+
+          \begin{align*}
+            \int_{E}^{} |f(x)| dx &\leq \int_{0}^{\mu(E)^{-\frac{1}{p}} \|f\|_{p,\infty}} \mu(E) d\lambda + \int_{\mu(E)^{-\frac{1}{p}} \|f\|_{p,\infty}}^{\infty}
+            \lambda^{-p} \|f\|_{p,\infty}^p d\lambda \\
+            &= \mu(E)^{1-\frac{1}{p}} \|f\|_{p,\infty} \mu^{1-\frac{1}{p}} \frac{1}{p-1} \|f\|_{p,\infty} \\
+            &= \mu(E)^{1-\frac{1}{p}} \frac{p}{p-1} \|f\|_{p,\infty}
+          \end{align*}
+
+          Taking the supremum over all such $E$, we get
+          \[ | \|f\| |_{p,\infty} \leq \frac{p}{p-1} \| f \|_{p,\infty} .\]
 
         \item
+          Take $f \in L^{p,\infty}$. Let $\lambda>0$. Define $E_\lambda = \{ |f| > \lambda \}$. Because $f \in L^{p,\infty}$, $\mu(E_\lambda) <
+          \infty$.
+
+          Then
+          \begin{align*}
+            \lambda d_f(\lambda)^{\frac{1}{p}} &= \lambda \mu(E_\lambda)^{\frac{1}{p}} \\
+            &\leq \mu(E_\lambda)^{\frac{1}{p} - 1} \int_{E_\lambda}^{} |f(x)| dx \quad \parbox{5cm}{by Chebyshev's Inequality}
+            &\leq | \|f\| |_{p,\infty}
+          \end{align*}
+
+          Taking the supremum over all $\lambda$, we get
+          \[ \|f\|_{p,\infty} \leq | \|f\| |_{p,\infty} .\]
 
         \item
           Let $c \in \R$ and $f \in L^{p,\infty}$. Then
