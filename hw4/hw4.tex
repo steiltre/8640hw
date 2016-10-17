@@ -48,6 +48,44 @@
       \item Prove that $M_s$ is not weak type (1,1).
     \end{enumerate}
 
+    \begin{proof}
+      \begin{enumerate}
+        \item
+          We already know that the Hardy-Littlewood maximal function maps $L^p$ to $L^p$ for $p>1$. That is, we know $\| M(f) \|_p \leq C \| f \|_p$
+          for $f \in L^p$. We will use this bound to prove the strong maximal function maps $L^p$ to $L^p$. We will assume we are working in $\R^2$.
+          We can apply the argument inductively to get the result for higher dimensions.
+
+          Let $f \in L^p(\R^2)$. We will use $I_1$ and $I_2$ to denote intervals in $\R$. We then have
+          \begin{align*}
+            \| M(f) \|_p^p &= \sup_{I_1, I_2} \frac{1}{|I_1| |I_2|} \int_{I_2}^{} \int_{I_1}^{} |f(x_1, x_2)|^p dx_1 dx_2 \\
+            &\leq \sup_{I_2} \frac{1}{|I_2|} \int_{I_2}^{} \left( \sup_{I_1} \frac{1}{|I_1|} \int_{I_1}^{} |f(x_1, x_2)|^p dx_1 \right) dx_2 \\
+          \end{align*}
+
+          For almost everywhere $x_2 \in \R$, the function $f(x_1, x_2) \in L^p(\R)$. Therefore, we can apply the one-dimensional estimate to get
+          \[ \| M(f) \|_p^p \leq \sup_{ I_2 } \frac{1}{|I_2|} \int_{I_2}^{} C \| f( \cdot, x_2) \|_p^p dx_2 .\]
+          Because $f \in L^p(\R^2)$, $f(\cdot, x_2) \in L^p$ and we can apply the one-dimensional estimate again to get
+          \[ \| M(f) \|_p^p \leq C^2 \|f\|_p^p .\]
+
+        \item
+
+          Let $f_n$ be the characteristic function of a rectangle of width $n$ and height $\frac{1}{n}$ centered at the origin. Then $\| f \|_1 = 1$.
+          Take a point $(x_1, x_2)$ with $|x_2| \leq \frac{1}{2n}$ and $x_1 > 0$.. Then by taking a rectangle of height $\delta$ that contains $(x_1, x_2)$ and
+          extends to the origin, we get
+          \begin{align*}
+            Mf(x_1,x_2) &= \sup_{R} \frac{1}{\mu(R)} \int_{R}^{} f d\mu \\
+            &\geq \frac{1}{\delta x_1} \frac{n}{2} \delta \\
+            &= \frac{n}{2 x_1}
+          \end{align*}
+
+          For a fixed $\lambda>0$, we then have $Mf(x_1,x_2) \geq \lambda$ if $x_1 \leq \frac{n}{2 \lambda}$. Therefore,
+          \begin{align*}
+            %\mu \left( \{ M_s f \geq \lambda \} \right) \geq 2 \mu \left( \{ (x_1, x_2) :
+          \end{align*}<++>
+
+      \end{enumerate}
+
+    \end{proof}
+
   \item (Exercise 1.1.12 in Grafakos) Let $f_1, \dots, f_N \in L^{p,\infty}(X,\mu)$. Prove that
     \[ \left\| \sum_{j=1}^N f_j \right\|_{p,\infty} \leq N \sum_{j=1}^N \| f_j \|_{p,\infty} .\]
 
