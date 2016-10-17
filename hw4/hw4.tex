@@ -6,7 +6,7 @@
 \documentclass[a4paper]{article}
 
 \title{Math 8640 HW \#4}
-\date{10/14/16}
+\date{10/17/16}
 \author{Trevor Steil}
 
 \usepackage{amsmath}
@@ -68,19 +68,24 @@
 
         \item
 
-          Let $f_n$ be the characteristic function of a rectangle of width $n$ and height $\frac{1}{n}$ centered at the origin. Then $\| f \|_1 = 1$.
-          Take a point $(x_1, x_2)$ with $|x_2| \leq \frac{1}{2n}$ and $x_1 > 0$.. Then by taking a rectangle of height $\delta$ that contains $(x_1, x_2)$ and
-          extends to the origin, we get
+          Let $f$ be the characteristic function of the area between the curve $y = \frac{1}{x}$ and the $x-$ axis for $\frac{1}{n} \leq x \leq n$.
+          Take a point $(x,y)$ in the first quadrant with $1 \leq x \leq n$. By looking at the rectangle connecting $(x,y)$
+          to the origin, we have
           \begin{align*}
-            Mf(x_1,x_2) &= \sup_{R} \frac{1}{\mu(R)} \int_{R}^{} f d\mu \\
-            &\geq \frac{1}{\delta x_1} \frac{n}{2} \delta \\
-            &= \frac{n}{2 x_1}
+            M_s f(x,y) &\geq \frac{1}{ \left(x - \frac{1}{n} \right) y} \int_{\frac{1}{n}}^{x} \frac{1}{t} dt \\
+            &= \frac{\log x + \log n}{\left( x - \frac{1}{n} \right) y} \\
+            &\geq \frac{\log n}{xy}
           \end{align*}
 
-          For a fixed $\lambda>0$, we then have $Mf(x_1,x_2) \geq \lambda$ if $x_1 \leq \frac{n}{2 \lambda}$. Therefore,
+          So we have $M_s f \geq \lambda$ if $y \leq \frac{\log n}{\lambda x}$. We will let $\lambda = 1$. Then
           \begin{align*}
-            %\mu \left( \{ M_s f \geq \lambda \} \right) \geq 2 \mu \left( \{ (x_1, x_2) :
-          \end{align*}<++>
+            \mu \left( \{ M_s f > 1 \} \right) &\geq \int_{1}^{n} \frac{\log n}{t} dt \\
+            &= \log^2 n
+          \end{align*}
+
+          We notice $\| f \|_{L^1} = 2 \log n$. Therefore, by increasing $n$ we see that we cannot have a constant such that
+          \[ \log^2 n \leq \mu \left( \{ M_s f > 1 \} \right) \leq C \log n \]
+          and $M_s$ is not weak type (1,1).
 
       \end{enumerate}
 
