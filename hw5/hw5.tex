@@ -1,0 +1,84 @@
+%        File: hw5.tex
+%     Created: Fri Oct 28 11:00 AM 2016 C
+% Last Change: Fri Oct 28 11:00 AM 2016 C
+%
+
+\documentclass[a4paper]{article}
+
+\title{Math 8640 Homework 5 }
+\date{11/4/16}
+\author{Trevor Steil}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{esint}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{claim}{Claim}
+\newtheorem*{problem}{Problem}
+%\newtheorem*{lemma}{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\supp}[1]{\mathop{\mathrm{supp}}\left(#1\right)}
+\newcommand{\lip}[1]{\mathop{\mathrm{Lip}}\left(#1\right)}
+\newcommand{\curl}{\mathrm{curl}}
+\newcommand{\la}{\left \langle}
+\newcommand{\ra}{\right \rangle}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\newenvironment{solution}[1][]{\emph{Solution #1}}
+
+\algnewcommand{\Or}{\textbf{ or }}
+\algnewcommand{\And}{\textbf{ or }}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item (cf. Exercise 5.1.1 in Grafakos.)
+\begin{enumerate}
+\item Prove that there is some absolute constant $C>0$ ($C=4$ would work) such that  for any $0<a<b<\infty$
+$$ \bigg| \int\limits_a^b \frac{\sin x}{x} \, dx \bigg| \le C.$$
+\item Prove that the value of the {\it{Dirichlet integral}} is $\pi/2$, i.e. $$  \int\limits_0^\infty \frac{\sin x}{x} \, dx = \frac{\pi}2.$$
+Show that this integral is defined in the sense of improper Riemann integral, but is not defined in the sense of Lebesgue integration on $(0,\infty)$, in particular, $\frac{\sin{x}}{x}$ it is not absolutely integrable on $(0,\infty)$.
+Deduce that  for $b\in \mathbb R$, $b\neq 0$ $$  \int\limits_0^\infty \frac{\sin (bx)}{x} \, dx = \frac{\pi}2 \textup{sgn } (b).$$
+\end{enumerate}
+\item (Exercise 5.1.3 in Grafakos.) Use the Fourier multiplier representation of the Hilbert transform to define $H(f)$ as an element of $\mathcal S' (\mathbb R)$ for bounded functions $f$ whose  (distributional) Fourier transform vanishes in the neighborhood of the origin. Show that with this definition $$ H (\cos x) = \sin x.$$
+
+\item (Exercise 5.1.4 in Grafakos.)  Let $E \subset \mathbb R$ be a measurable set with finite measure. Show that the distribution function of $H ({\bf{1}}_E)$ satisfies $$ d_{H ({\bf{1}}_E)} (\lambda)  = \frac{ 4|E| }{ e^{\pi \lambda}  - e^{-\pi \lambda}}$$ for all $\lambda >0$.
+
+Conclude that for all $f$ of the form $f = {\bf{1}}_E$  the Hilbert transform satisfies a weak $(1,1)$ inequality, i.e. $\| H (f) \|_{1,\infty} \le C \| f \|_1$.
+
+Remark: this is called ``restricted weak type" and it suffices for real interpolation (See Stein or Grafakos).
+
+Hint: First consider $E$ to be an interval (we computed $H( {\bf{1}}_{(a,b)})$ in class), then consider a finite union of intervals, and then approximate an arbitrary measurable set by unions of intervals. For a more extensive and detailed hint, see Grafakos.
+
+Alternatively: prove that $H$ has  restricted weak type $(1,1)$ in any other way (avoiding the Calder\'{o}n--Zygmund decomposition).
+
+\item (Exercise 5.1.10 in Grafakos.)  Prove the distributional (.e. in the sense of $\mathcal S' (\mathbb R^n)$) identity $$ \partial_j |x|^{-n+1}  = (1-n) \textup{ p.v. } \frac{x_j}{|x|^{n+1}}.$$ Use it to give a proof of the Fourier multiplier representation of the Riesz transform.
+
+\item (Exercise 5.1.11 in Grafakos). Prove that if $T$ is a linear operator, which is bounded on $L^2 (\mathbb R)$, commutes with translations and dilations, and anticommutes with reflections (i.e. $ T (\widetilde{f}\,) = - \widetilde{Tf}$, where $\widetilde{f} (x) = f (-x)$), then $T$ is a constant multiple of the Hilbert transform.
+
+\item (Exercise 5.3.5 in Grafakos). Assume that a linear operator  $ T$ maps $L^p (\mathbb R^n)$ to itself for some $p >1$ and assume that it satisfies the following property: if $f$ is supported in a cube $Q$, then $Tf$ is supported in a fixed multiple of $Q$, i.e. a cube $Q^* = c Q$ with the same center as $Q$ and $c$-times the side length (for some fixed $c>0$).
+
+Prove that $T$ is of weak type $(1,1)$, i.e. $T$ maps $L^1$ into $L^{1,\infty}$.
+
+Hint: use the Calder\'{o}n--Zygmund decomposition.
+
+\end{enumerate}
+
+
+\end{document}
+
+
