@@ -272,6 +272,22 @@
     As we take $\varepsilon \to 0$, we will have the second term go to 0, leaving
     \[ \la \partial_j |x|^{-n+1}, \psi_\varepsilon \varphi \ra = \la (1-n) \textup{ p.v. } \frac{x_j}{|x|^{n+1}}, \varphi \ra .\]
 
+    For the second term, we have
+    \begin{align*}
+      - \la |x|^{-n+1}, \partial_j \left[ (1-\psi_\varepsilon) \varphi \right] \ra &= \la |x|^{-n+1}, \varphi \partial_j \psi_\varepsilon \ra - \la
+      |x|^{-n+1}, (1 - \psi_\varepsilon) \partial_j \varphi \ra \\
+    \end{align*}
+
+    Because $|x|^{-n+1} \partial_j \psi_\varepsilon$ is odd, we can add a constant to our integral, giving
+    \begin{align*}
+      \int_{\R^n}^{} |x|^{-n+1} \partial_j \psi_\varepsilon(x) \varphi(x) dx &= \int_{\R^n}^{} |x|^{-n+1} \partial_j \psi \left( \frac{x}{\varepsilon}
+      \right) \frac{\varphi(x) - \varphi(0)}{\varepsilon} dx
+    \end{align*}
+    Bounding this using $\varphi'$ and using the fact that $\partial_j \psi \left( \frac{x}{\varepsilon} \right) \to 0$, this term goes to zero.
+    Because $(1 - \psi_\varepsilon) \to 0$, we get $\la |x|^{-n+1}, (1 - \psi_\varepsilon) \partial_j \varphi \ra \to 0$ as well. This leaves our
+    principal value term as the only nonzero term, so
+    \[ \la \partial_j |x|^{-n+1}, \varphi \ra = \la (1-n) \textup{ p.v. } \frac{x_j}{|x|^{n+1}}, \varphi \ra .\]
+
   \end{proof}
 
 \item
