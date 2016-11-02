@@ -254,6 +254,24 @@
 
   \begin{proof}
 
+    Take any $\varphi \in \mathcal{S}$ and let $\psi \in \mathcal{C}^\infty(\R)$ be even with $\psi(x) = 0$ for $0 \leq |x| \leq \frac{1}{2}$, and $\psi(x) = 1$ for $|x| \geq 1$. We will
+    use the standard dilation given by $\psi_\varepsilon(x) = \psi \left( \frac{x}{\varepsilon} \right)$. We will abuse notation slightly and use
+    $\psi(x)$ to mean $\psi(|x|)$. Using this, we can write
+    \begin{align*}
+      \la \partial_j |x|^{-n+1} , \varphi \ra &= \la \psi_\varepsilon \partial_j |x|^{-n+1}, \varphi \ra + \la (1-\psi_\varepsilon) \partial_j |x|^{-n+1}, \varphi \ra \\
+      &=  \la \partial_j |x|^{-n+1}, \psi_\varepsilon \varphi \ra - \la |x|^{-n+1}, \partial_j \left[ (1 - \psi_\varepsilon) \varphi \right] \ra \\
+    \end{align*}
+
+    In the first term, we see $\psi_\varepsilon \varphi$ is supported away from 0, so we are able to take the derivative of $|x|^{-n+1}$ to get
+    \begin{align*}
+      \la \partial_j |x|^{-n+1}, \psi_\varepsilon \varphi \ra &= \la (1-n) \frac{x_j}{|x|^{n+1}}, \psi_\varepsilon \varphi \ra \\
+      &= \int_{|x|>\varepsilon}^{} (1-n) \frac{x_j}{|x|^{n+1}} \varphi dx + \int_{\frac{\varepsilon}{2} \leq |x| \leq \varepsilon}^{}
+      \frac{x_j}{|x|^{n+1}} \psi_\varepsilon \varphi dx
+    \end{align*}
+
+    As we take $\varepsilon \to 0$, we will have the second term go to 0, leaving
+    \[ \la \partial_j |x|^{-n+1}, \psi_\varepsilon \varphi \ra = \la (1-n) \textup{ p.v. } \frac{x_j}{|x|^{n+1}}, \varphi \ra .\]
+
   \end{proof}
 
 \item
