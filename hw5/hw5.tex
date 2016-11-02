@@ -15,6 +15,7 @@
 \usepackage{esint}
 \usepackage{algorithm}
 \usepackage{algorithmicx}
+\usepackage{bbm}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[section]
@@ -188,6 +189,62 @@
 
   \begin{solution}
 
+    First, assume $E = \bigcup_{i=1}^n (a_i, b_i)$ is a union of disjoint intervals. Then we have
+    \[ H( \mathbbm{1}_E )(x) = \frac{1}{\pi} \log \left( \prod_{i=1}^n \left| \frac{x-b_i}{x-a_i} \right| \right) .\]
+    We see that
+    \[ \lim_{x \to b_i} H( \mathbbm{1}_E )(x) = -\infty, \]
+    and
+    \[ \lim_{x \to a_i} H( \mathbbm{1}_E )(x) = \infty. \]
+    Also, between these singularities, $H( \mathbbm{1}_E )(x)$ is either monotonically increasing or monotonically decreasing. Thus for any $\lambda >
+    0$ and any $1 \leq i \leq n$, there is exactly one $x \in (a_i, b_i)$ such that $H( \mathbbm{1}_E )(x) = \lambda$. Call these roots $r_j$.
+    Similarly, there is exactly one $x \in (b_j, a_{j+1})$ such that $H( \mathbbm{1}_E )(x) = \lambda$. Call these roots $\rho_j$.
+
+    By the monotonicity of $H( \mathbbm{1}_E )(x)$, we have
+    \[ \mu \left( \left\{ H( \mathbbm{1}_E ) > \lambda \right\} \right) = \sum_{j=1}^n r_j - \sum_{j=1}^n \rho_j .\]
+
+    Let's look more closely at solutions of $H( \mathbbm{1}_E )(x) = \lambda$. First, we can rewrite this equation as
+    \begin{equation} \label{eqn:roots}
+      \prod_{i=1}^n \left| \frac{x-b_i}{x-a_i} \right| = e^{\pi \lambda} .
+    \end{equation}
+    For solutions in $(a_j, b_j)$, we know
+    \[ \left| \frac{x-b_i}{x-a_i} \right| =
+      \begin{cases}
+        \frac{x-b_i}{x-a_i} &\text{if } i \neq j \\
+        - \frac{x-b_i}{x-a_i} &\text{if } i = j
+      \end{cases}
+    \]
+
+    In this case, \eqref{eqn:roots} can be rewritten as
+    \[ \prod_{i=1}^n (x - b_i) = -e^{\pi \lambda} \prod_{i=1}^n (x-a_i) .\]
+
+    For a polynomial, $c_n x^n + c_{n-1} x^{n-1} + \dots + c_0$, the sum of the roots can be expressed as $-\frac{c_{n-1}}{c_n}$. In this case, the
+    particular roots were defined to be $r_j$, so we get
+    \[ \sum_{i=1}^n r_i = \frac{\sum_{i=1}^n \left( b_i + a_i e^{\pi \lambda} \right)}{1+e^{\pi \lambda}} .\]
+
+    In a similar manner, we can find
+    \[ \sum_{i=1}^n \rho_i = \frac{\sum_{i=1}^n \left(b_i - a_i e^{\pi \lambda} \right)}{1 - e^{\pi \lambda}} .\]
+
+    This gives us
+    \begin{align*}
+      \mu \left( \left\{ H( \mathbbm{1}_E ) > \lambda \right\} \right) &= \sum_{j=1}^n r_j - \sum_{j=1}^n \rho_j \\
+      &= \frac{\sum_{j=1}^n \left( b_j + a_j e^{\pi \lambda} \right)}{1+e^{\pi \lambda}} -
+      \frac{\sum_{j=1}^n \left( b_j - a_j e^{\pi \lambda} \right)}{1 - e^{\pi \lambda}} \\
+      &= \frac{\sum_{j=1}^n \left[ \left(b_j + a_j e^{\pi \lambda} \right) \left( 1 - e^{\pi \lambda} \right) - \left(b_j - a_j e^{\pi \lambda}
+      \right) \left( 1+e^{\pi \lambda} \right) \right]}{1 - e^{2 \pi \lambda}} \\
+      &= \frac{\sum_{j=1}^n 2 \left( a_j - b_j \right) e^{\pi \lambda}}{1 - e^{2 \pi \lambda}} \\
+      &= \frac{\sum_{j=1}^n 2 \left( b_j - a_j \right)}{e^{\pi \lambda} - e^{- \pi \lambda}} \\
+      &= \frac{2 |E|}{e^{\pi \lambda} - e^{-\pi \lambda}}
+    \end{align*}
+
+    Looking at solutions to $H( \mathbbm{1}_E )(x) = -\lambda$, we get the same result. Therefore, we have that
+    \[ d_{H( \mathbbm{1}_E )} (\lambda) = \frac{4 |E|}{e^{\pi \lambda} - e^{-\pi \lambda}} \]
+    for $E$ being a finite union of disjoint intervals.
+
+    Now take $E$ to be any measurable subset of $\R$ with finite measure. Then $\mathbbm{1}_E$ is a measurable function, so we can take subsets $E_n$
+    of $\R$ which are finite unions of intervals such that $\mathbbm{1}_{E_n} \to \mathbbm{1}_{E}$ in $L^1$. Then $H( \mathbbm{1}_{E_n} ) \to H(
+    \mathbbm{1}_{E})$ because $H: L^1 \to L^{1,\infty}$. But this means $d_{H( \mathbbm{1}_{E_n} )} \to d_{H( \mathbbm{1}_E )}$ and the result holds
+    for measurable $E$.
+
   \end{solution}
 
 \item
@@ -272,14 +329,20 @@
     By choosing $\alpha = \lambda$, we get
     \[ \mu \left( \left\{ |Tg| > \frac{\lambda}{2} \right\} \right) \leq \frac{\|T\|_{p \to p}^p}{\lambda} 2^{n(p-1) + p} \|f\|_1 .\]
 
-    For the second term, we have
+    For the second term, we have $Tb_j$ is supported on $c Q_j$. The $Q_j$ are disjoint, so there is a constant $N$ depending on $C$ and $n$ such that
+    at most $N$ of the $c Q_j$ intersect at any point. Therefore, ${ \mu \left( \left\{ \sum_j |Tb_j| > \frac{\lambda}{2} \right \} \right) \leq \sum_j
+    \mu \left( \left\{ |Tb_j| > \frac{\lambda}{2N} \right\} \right) }$. Using this fact, we have
     \begin{align*}
       \mu \left( \left\{ \left| T \sum_j b_j \right| > \frac{\lambda}{2} \right\} \right) &\leq \mu \left( \left\{ \sum_j | T b_j | >
-        \frac{\lambda}{2} \right\} \right) \quad \parbox{7cm}{\textbf{NEED TO JUSTIFY THIS!!!!!!!!!!!!}} \\
+        \frac{\lambda}{2} \right\} \right) \quad \parbox{7cm}{because the $b_j$ have disjoint support} \\
       &\leq \sum_j \mu \left( \left\{ |T b_j | > \frac{\lambda}{2N} \right\} \right) \\
       &\leq \sum_j c |Q_j| \quad \parbox{5cm}{because $\supp{Tb_j} \subset c Q_j$} \\
       &\leq \frac{c}{\lambda} \|f\|_1 \quad \parbox{5cm}{by (f)}
     \end{align*}
+
+    Combining our terms, we have
+    \[ \mu \left( \left\{ |Tf| > \lambda \right\} \right) \leq \frac{C}{\lambda} \|f\|_1 \]
+    for some constant $C$.
 
   \end{proof}
 
