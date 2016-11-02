@@ -245,6 +245,42 @@
 
   \begin{proof}
 
+    Take $f \in L^1$. Using the Calder\'{o}n--Zygmund decomposition, we can write $f = g+b$ where
+    \begin{enumerate}
+      \item $\|g\|_1 \leq \|f\|_1$
+      \item $ \|g\|_\infty \leq 2^{n} \alpha$
+      \item $b = \sum_j b_j$ with the $b_j$ supported on disjoint cubes $Q_j$
+      \item $\int_{Q_j}^{}b_j dx = 0$
+      \item $\| b_j \|_1 \leq 2^{n+1}\alpha |Q_j|$
+      \item $ \sum_j |Q_j| \leq \frac{1}{\alpha} \| f \|_1$
+    \end{enumerate}
+    where $\alpha > 0$ will be determined later.
+
+    We have
+    \[ \mu \left( \{ |Tf| > \lambda \} \right) \leq \mu \left( \left\{ |Tg| > \frac{\lambda}{2} \right\} \right) + \mu \left( \left\{ |Tb| >
+      \frac{\lambda}{2} \right\} \right) .\]
+
+    We will look at each of these terms individually. First,
+    \begin{align*}
+      \mu\left( \left\{ |Tg| > \frac{\lambda}{2} \right\} \right) &\leq \frac{2^p}{\lambda^p} \|Tg\|_p^p \quad \parbox{5cm}{by Chebyshev's inequality}
+      \\
+      &\leq \frac{2^p \|T\|_{p \to p}^p}{\lambda^p} \|g\|_p^p \quad \parbox{5cm}{by $L^p$ boundedness of $T$} \\
+      &\leq \frac{2^p \|T\|_{p \to p}^p}{\lambda^p} 2^{n(p-1)} \alpha^{p-1} \|g\|_1 \quad \parbox{5cm}{by (b)} \\
+      &\leq \frac{2^p \|T\|_{p \to p}^p}{\lambda^p} 2^{n(p-1)} \alpha^{p-1} \|f\|_1 \quad \parbox{5cm}{by (a)}
+    \end{align*}
+
+    By choosing $\alpha = \lambda$, we get
+    \[ \mu \left( \left\{ |Tg| > \frac{\lambda}{2} \right\} \right) \leq \frac{\|T\|_{p \to p}^p}{\lambda} 2^{n(p-1) + p} \|f\|_1 .\]
+
+    For the second term, we have
+    \begin{align*}
+      \mu \left( \left\{ \left| T \sum_j b_j \right| > \frac{\lambda}{2} \right\} \right) &\leq \mu \left( \left\{ \sum_j | T b_j | >
+        \frac{\lambda}{2} \right\} \right) \quad \parbox{7cm}{\textbf{NEED TO JUSTIFY THIS!!!!!!!!!!!!}} \\
+      &\leq \sum_j \mu \left( \left\{ |T b_j | > \frac{\lambda}{2N} \right\} \right) \\
+      &\leq \sum_j c |Q_j| \quad \parbox{5cm}{because $\supp{Tb_j} \subset c Q_j$} \\
+      &\leq \frac{c}{\lambda} \|f\|_1 \quad \parbox{5cm}{by (f)}
+    \end{align*}
+
   \end{proof}
 
 \end{enumerate}
