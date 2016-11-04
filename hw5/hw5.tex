@@ -288,6 +288,20 @@
     principal value term as the only nonzero term, so
     \[ \la \partial_j |x|^{-n+1}, \varphi \ra = \la (1-n) \textup{ p.v. } \frac{x_j}{|x|^{n+1}}, \varphi \ra .\]
 
+    Taking Fourier Transforms, we have
+    \[ \la \mathcal{F} [ (1-n) \textup{ p.v. } \frac{x_j}{|x|^{n+1}} ], f \ra = \la \frac{\pi^{\frac{n+1}{2}}}{\Gamma \left( \frac{n+1}{2} \right)}
+    (1-n) \mathcal{F} (W_j) , f \ra, \]
+    and
+    \begin{align*}
+      \la \mathcal{F} [\partial_j |x|^{-n+1}], f \ra &= \la 2 \pi i \xi_j \mathcal{F}[ |x|^{-n+1}], f \ra \\
+      &= \la 2 \pi i \frac{\pi^{\frac{n-1}{2}}}{\Gamma \left( \frac{n-1}{2} \right)} \frac{\xi_j}{|\xi|}, f \ra \quad \parbox{5cm}{by Theorem
+      2.4.6 in Grafakos}
+    \end{align*}
+
+    Using properties of the Gamma function, we then have
+    \[ \widehat{W}_j = -i \frac{\xi_j}{|\xi|} \]
+    as distributions.
+
   \end{proof}
 
 \item
